@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Manila Mass Transit Operations</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        #map {
+            flex: 1;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-line {
+            margin: 0 5px;
+            background-color: #ccc;
+        }
+
+        .btn-line-line1.active {
+            background-color: green;
+        }
+
+        .btn-line-line2.active {
+            background-color: purple;
+        }
+
+        .btn-line-line3.active {
+            background-color: blue;
+        }
+
+        .btn-line-all.active {
+            background-color: turquoise;
+        }
+
+        .info-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <div class="map-overlay">
+        <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
+        <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
+    </div>
+
+    <div class="info-box">
+        <h4>Station Information</h4>
+        <div id="station-info"></div>
+    </div>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
+            center: [121.03, 14.57],
+            zoom: 12,
+            minZoom: 11,
+            maxZoom: 15,
+            pitch: 40,
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+        var popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
+
+        map.on('load', function () {
+            map.addSource('line1', {
+                type: 'geojson',
+                data: 'line1.geojson'
+            });
+
+            map.addSource('line2', {
+                type: 'geojson',
+                data: 'line2.geojson'
+            });
+
+            map.addSource('line3', {
+                type: 'geojson',
+                data: 'line3.geojson'
+            });
+
+            map.addLayer({
+                id: 'line1',
+                type: 'circle',
+                source: 'line1',
+                paint: {
+                    'circle-radius': 7,
+                    'circle-color': '#4dc262'
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line2',
+                type: 'circle',
+                source: 'line2',
+                paint: {
+                    'circle-radius': 7,
+                    'circle-color': '#800080'
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line3',
+                type: 'circle',
+                source: 'line3',
+                paint: {
+                    'circle-radius': 7,
+                    'circle-color': '#0000ff'
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.on('mouseenter', 'line1', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line1', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line2', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line2', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line3', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line3', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line1', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseenter', 'line2', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseenter', 'line3', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'line1', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            map.on('mouseleave', 'line2', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            map.on('mouseleave', 'line3', function () {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+
+        function toggleLine(lineId) {
+            map.setLayoutProperty('line1', 'visibility', 'none');
+            map.setLayoutProperty('line2', 'visibility', 'none');
+            map.setLayoutProperty('line3', 'visibility', 'none');
+
+            map.setLayoutProperty(lineId, 'visibility', 'visible');
+
+            document.querySelectorAll('.btn-line').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
+
+            document.querySelector('.btn-line-' + lineId).classList.add('active');
+        }
+
+        function toggleAllLines() {
+            map.setLayoutProperty('line1', 'visibility', 'visible');
+            map.setLayoutProperty('line2', 'visibility', 'visible');
+            map.setLayoutProperty('line3', 'visibility', 'visible');
+
+            document.querySelectorAll('.btn-line').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
+
+            document.querySelector('.btn-line-all').classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>

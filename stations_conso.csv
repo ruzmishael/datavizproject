@@ -1,0 +1,47 @@
+line,station_name,latitude,longitude,daily_ridership
+LRT 1,Baclaran Station,14.534187,120.998312,1
+LRT 1,EDSA Station,14.539063,121.000687,2
+LRT 1,Libertad Station,14.547812,120.998563,3
+LRT 1,Gil Puyat Station,14.554188,120.997187,4
+LRT 1,Vito Cruz Station,14.563313,120.994812,5
+LRT 1,Quirino Station,14.570313,120.991563,6
+LRT 1,Pedro Gil Station,14.576562,120.988062,3
+LRT 1,United Nations Station,14.582562,120.984562,8
+LRT 1,Central Station,14.592813,120.981687,2
+LRT 1,Carriedo Station,14.599063,120.981313,10
+LRT 1,Doroteo Jose Station,14.605438,120.982062,4
+LRT 1,Bambang Station,14.611187,120.982438,9
+LRT 1,Tayuman Station,14.616688,120.982812,8
+LRT 1,Blumentritt Station,14.622687,120.982938,7
+LRT 1,Abad Santos Station,14.630562,120.981437,5
+LRT 1,R. Papa Station,14.636188,120.982313,4
+LRT 1,5th Avenue Station,14.644438,120.983563,3
+LRT 1,Monumento Station,14.654312,120.983937,3
+LRT 1,Balintawak Station,14.657312,121.003187,2
+LRT 1,Roosevelt Station,14.657563,121.021062,5
+LRT 2,Recto Station,14.603438,120.983563,5
+LRT 2,Legarda Station,14.600812,120.992563,2
+LRT 2,Pureza Station,14.601688,121.005188,3
+LRT 2,V. Mapa Station,14.604062,121.017187,6
+LRT 2,J. Ruiz Station,14.610563,121.026187,4
+LRT 2,Gilmore Station,14.613563,121.034188,8
+LRT 2,Betty Go-Belmonte Station,14.618562,121.042812,6
+LRT 2,Araneta Center-Cubao Station,14.622687,121.052813,10
+LRT 2,Anonas Station,14.627937,121.064688,6
+LRT 2,Katipunan Station,14.630813,121.072688,9
+LRT 2,Santolan Station,14.622063,121.085938,8
+LRT 2,Marikina Station,14.620437,121.100313,5
+LRT 2,Antipolo Station,14.624813,121.121313,10
+MRT 3,North Avenue Station,14.652188,121.032313,5
+MRT 3,Quezon Avenue Station,14.642812,121.038562,5
+MRT 3,GMA Kamuning Station,14.635188,121.043312,4
+MRT 3,Araneta Center-Cubao Station,14.619438,121.051187,10
+MRT 3,Santolan-Annapolis Station,14.607812,121.056438,7
+MRT 3,Ortigas Avenue Station,14.587813,121.056687,8
+MRT 3,Shaw Boulevard Station,14.581188,121.053562,10
+MRT 3,Boni Avenue Station,14.573812,121.048187,4
+MRT 3,Guadalupe Station,14.567438,121.045687,7
+MRT 3,Buendia Station,14.554562,121.034562,8
+MRT 3,Ayala Station,14.549188,121.027938,5
+MRT 3,Magallanes Station,14.542063,121.019437,9
+MRT 3,Taft Avenue Station,14.537688,121.002188,10
