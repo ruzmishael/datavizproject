@@ -58,22 +58,6 @@
         .btn-line-all.active {
             background-color: turquoise;
         }
-
-        .info-box {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: rgba(0, 0, 0, 0.5); /* Opacity set to 50% */
-            padding: 10px;
-            border-radius: 4px;
-            color: #333; /* Dark gray text color */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 250px;
-        }
-
-        #station-info {
-            opacity: 1; /* Full opacity for the text box */
-        }
     </style>
 </head>
 
@@ -88,236 +72,227 @@
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
-    <div class="info-box">
-        <h4>Station Information</h4>
-        <div id="station-info">
-            <p>This is a sample short essay or information that you want to display in the info-box. You can replace this text with your actual content. Feel free to format it as needed and provide any additional details you want to share.</p>
-        </div>
-    </div>
-
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    
-<script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
-        center: [121.03, 14.57],
-        zoom: 12,
-        minZoom: 11,
-        maxZoom: 15,
-        pitch: 0, // Set the default pitch to 0
-    });
-    
-    map.addControl(new mapboxgl.NavigationControl());
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
+            center: [121.03, 14.57],
+            zoom: 12,
+            minZoom: 11,
+            maxZoom: 15,
+            pitch: 40,
+        });
+        
+        map.addControl(new mapboxgl.NavigationControl());
 
-    var popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
-    });
-
-    map.on('load', function () {
-        map.addSource('line1', {
-            type: 'geojson',
-            data: 'line1.geojson'
+        var popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
         });
 
-        map.addSource('line2', {
-            type: 'geojson',
-            data: 'line2.geojson'
+        map.on('load', function () {
+            map.addSource('line1', {
+                type: 'geojson',
+                data: 'line1.geojson'
+            });
+
+            map.addSource('line2', {
+                type: 'geojson',
+                data: 'line2.geojson'
+            });
+
+            map.addSource('line3', {
+                type: 'geojson',
+                data: 'line3.geojson'
+            });
+
+            map.addLayer({
+                id: 'line1',
+                type: 'circle',
+                source: 'line1',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 5,
+                        100000, 20,
+                    ],
+                    'circle-color': '#ab4e52',
+                    'circle-opacity': 0.5,
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line2',
+                type: 'circle',
+                source: 'line2',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 5,  
+                        100000, 20,
+                    ],
+                    'circle-color': '#ab4e52',
+                    'circle-opacity': 0.5, 
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line3',
+                type: 'circle',
+                source: 'line3',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 5, 
+                        100000, 20,
+                    ],
+                    'circle-color': '#ab4e52',
+                    'circle-opacity': 0.5,
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.on('mouseenter', 'line1', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line1', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line2', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line2', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line3', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .addTo(map);
+            });
+
+            map.on('mouseleave', 'line3', function () {
+                popup.remove();
+            });
+
+            map.on('mouseenter', 'line1', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseenter', 'line2', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseenter', 'line3', function () {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'line1', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            map.on('mouseleave', 'line2', function () {
+                map.getCanvas().style.cursor = '';
+            });
+
+            map.on('mouseleave', 'line3', function () {
+                map.getCanvas().style.cursor = '';
+            });
         });
 
-        map.addSource('line3', {
-            type: 'geojson',
-            data: 'line3.geojson'
-        });
+        function toggleLine(lineId) {
+            let zoomLevel, centerCoordinates, pitch;
 
-        map.addLayer({
-            id: 'line1',
-            type: 'circle',
-            source: 'line1',
-            paint: {
-                'circle-radius': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'daily_ridership'],
-                    0, 5,
-                    100000, 20,
-                ],
-                'circle-color': '#ab4e52',
-                'circle-opacity': 0.5,
-            },
-            layout: {
-                'visibility': 'none'
+            switch (lineId) {
+                case 'line1':
+                    zoomLevel = 12.08;
+                    centerCoordinates = [121.007043, 14.595964];
+                    pitch = 40;
+                    break;
+                case 'line2':
+                    zoomLevel = 12.56;
+                    centerCoordinates = [121.048054, 14.605247];
+                    pitch = 40;
+                    break;
+                case 'line3':
+                    zoomLevel = 11.96;
+                    centerCoordinates = [121.042244, 14.586893];
+                    pitch = 40;
+                    break;
+
+                default:
+                    zoomLevel = 12;
+                    centerCoordinates = [121.03, 14.57];
+                    pitch = 1;
             }
-        });
 
-        map.addLayer({
-            id: 'line2',
-            type: 'circle',
-            source: 'line2',
-            paint: {
-                'circle-radius': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'daily_ridership'],
-                    0, 5,  
-                    100000, 20,
-                ],
-                'circle-color': '#ab4e52',
-                'circle-opacity': 0.5, 
-            },
-            layout: {
-                'visibility': 'none'
-            }
-        });
+            map.flyTo({
+                center: centerCoordinates,
+                zoom: zoomLevel,
+                pitch: pitch,
+                essential: true
+            });
 
-        map.addLayer({
-            id: 'line3',
-            type: 'circle',
-            source: 'line3',
-            paint: {
-                'circle-radius': [
-                    'interpolate',
-                    ['linear'],
-                    ['get', 'daily_ridership'],
-                    0, 5, 
-                    100000, 20,
-                ],
-                'circle-color': '#ab4e52',
-                'circle-opacity': 0.5,
-            },
-            layout: {
-                'visibility': 'none'
-            }
-        });
+            map.setLayoutProperty('line1', 'visibility', 'none');
+            map.setLayoutProperty('line2', 'visibility', 'none');
+            map.setLayoutProperty('line3', 'visibility', 'none');
 
-        map.on('mouseenter', 'line1', function (e) {
-            var stationName = e.features[0].properties.station_name;
-            var dailyRidership = e.features[0].properties.daily_ridership;
+            map.setLayoutProperty(lineId, 'visibility', 'visible');
 
-            popup.setLngLat(e.lngLat)
-                .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
-                .addTo(map);
-        });
+            document.querySelectorAll('.btn-line').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
 
-        map.on('mouseleave', 'line1', function () {
-            popup.remove();
-        });
-
-        map.on('mouseenter', 'line2', function (e) {
-            var stationName = e.features[0].properties.station_name;
-            var dailyRidership = e.features[0].properties.daily_ridership;
-
-            popup.setLngLat(e.lngLat)
-                .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
-                .addTo(map);
-        });
-
-        map.on('mouseleave', 'line2', function () {
-            popup.remove();
-        });
-
-        map.on('mouseenter', 'line3', function (e) {
-            var stationName = e.features[0].properties.station_name;
-            var dailyRidership = e.features[0].properties.daily_ridership;
-
-            popup.setLngLat(e.lngLat)
-                .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
-                .addTo(map);
-        });
-
-        map.on('mouseleave', 'line3', function () {
-            popup.remove();
-        });
-
-        map.on('mouseenter', 'line1', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
-
-        map.on('mouseenter', 'line2', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
-
-        map.on('mouseenter', 'line3', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
-
-        map.on('mouseleave', 'line1', function () {
-            map.getCanvas().style.cursor = '';
-        });
-
-        map.on('mouseleave', 'line2', function () {
-            map.getCanvas().style.cursor = '';
-        });
-
-        map.on('mouseleave', 'line3', function () {
-            map.getCanvas().style.cursor = '';
-        });
-    });
-
-    function toggleLine(lineId) {
-        let zoomLevel, centerCoordinates, pitch;
-
-        switch (lineId) {
-            case 'line1':
-                zoomLevel = 12.08;
-                centerCoordinates = [121.007043, 14.595964];
-                pitch = 40;
-                break;
-            case 'line2':
-                zoomLevel = 12.56;
-                centerCoordinates = [121.048054, 14.605247];
-                pitch = 40;
-                break;
-            case 'line3':
-                zoomLevel = 11.96;
-                centerCoordinates = [121.042244, 14.586893];
-                pitch = 40;
-                break;
-
-            default:
-                zoomLevel = 12;
-                centerCoordinates = [121.03, 14.57];
-                pitch = 0; // Set the default pitch to 0
+            document.querySelector('.btn-line-' + lineId).classList.add('active');
         }
 
-        map.flyTo({
-            center: centerCoordinates,
-            zoom: zoomLevel,
-            pitch: pitch,
-            essential: true
-        });
+        function toggleAllLines() {
+            map.setLayoutProperty('line1', 'visibility', 'visible');
+            map.setLayoutProperty('line2', 'visibility', 'visible');
+            map.setLayoutProperty('line3', 'visibility', 'visible');
 
-        map.setLayoutProperty('line1', 'visibility', 'none');
-        map.setLayoutProperty('line2', 'visibility', 'none');
-        map.setLayoutProperty('line3', 'visibility', 'none');
+            document.querySelectorAll('.btn-line').forEach(function (btn) {
+                btn.classList.remove('active');
+            });
 
-        map.setLayoutProperty(lineId, 'visibility', 'visible');
-
-        document.querySelectorAll('.btn-line').forEach(function (btn) {
-            btn.classList.remove('active');
-        });
-
-        document.querySelector('.btn-line-' + lineId).classList.add('active');
-    }
-
-    function toggleAllLines() {
-        map.setLayoutProperty('line1', 'visibility', 'visible');
-        map.setLayoutProperty('line2', 'visibility', 'visible');
-        map.setLayoutProperty('line3', 'visibility', 'visible');
-
-        document.querySelectorAll('.btn-line').forEach(function (btn) {
-            btn.classList.remove('active');
-        });
-
-        document.querySelector('.btn-line-all').classList.add('active');
-    }
-</script>
+            document.querySelector('.btn-line-all').classList.add('active');
+        }
+    </script>
 
 </body>
 
