@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
         body {
             margin: 0;
             padding: 0;
@@ -22,22 +23,53 @@
             flex: 1;
         }
 
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-line {
+            margin: 0 5px;
+            background-color: #ccc; /* Default color for not clicked */
+        }
+
+        .btn-line.active {
+            background-color: turquoise; /* Color when clicked */
+        }
+
+        .btn-line-line1.active {
+            background-color: green; /* Color for Line 1 when clicked */
+        }
+
+        .btn-line-line2.active {
+            background-color: purple; /* Color for Line 2 when clicked */
+        }
+
+        .btn-line-line3.active {
+            background-color: blue; /* Color for Line 3 when clicked */
+        }
+
+        .btn-line-all.active {
+            background-color: turquoise; /* Color for All Lines when clicked */
+        }
+
         .info-box {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: rgba(255, 255, 255, 0.3); /* Updated opacity to 30% */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
             border-radius: 4px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 250px; /* Set a fixed width for the info-box */
-        }
-
-        #station-info {
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            opacity: 0.7; /* Set the desired opacity for the text */
         }
     </style>
 </head>
@@ -46,13 +78,16 @@
 
     <div id="map"></div>
 
+    <div class="map-overlay">
+        <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
+        <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
+    </div>
+
     <div class="info-box">
-        <div class="info-box">
         <h4>Station Information</h4>
-        <div id="station-info">
-            <p>This is a sample short essay or information that you want to display in the info-box. You can replace this text with your actual content.</p>
-            <p>Feel free to format it as needed and provide any additional details you want to share.</p>
-        </div>
+        <div id="station-info"></div>
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -70,7 +105,8 @@
             maxZoom: 15,
             pitch: 40,
         });
-        
+
+        // Add navigation control (zoom in, zoom out)
         map.addControl(new mapboxgl.NavigationControl());
 
         var popup = new mapboxgl.Popup({
@@ -99,15 +135,8 @@
                 type: 'circle',
                 source: 'line1',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5,
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5,
+                    'circle-radius': 7,
+                    'circle-color': '#4dc262'
                 },
                 layout: {
                     'visibility': 'none'
@@ -119,15 +148,8 @@
                 type: 'circle',
                 source: 'line2',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5,  
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5, 
+                    'circle-radius': 7,
+                    'circle-color': '#800080'
                 },
                 layout: {
                     'visibility': 'none'
@@ -139,21 +161,15 @@
                 type: 'circle',
                 source: 'line3',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5, 
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5,
+                    'circle-radius': 7,
+                    'circle-color': '#0000ff'
                 },
                 layout: {
                     'visibility': 'none'
                 }
             });
 
+            // Hover function for Line 1
             map.on('mouseenter', 'line1', function (e) {
                 var stationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
@@ -167,6 +183,7 @@
                 popup.remove();
             });
 
+            // Hover function for Line 2
             map.on('mouseenter', 'line2', function (e) {
                 var stationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
@@ -180,6 +197,7 @@
                 popup.remove();
             });
 
+            // Hover function for Line 3
             map.on('mouseenter', 'line3', function (e) {
                 var stationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
@@ -219,60 +237,35 @@
         });
 
         function toggleLine(lineId) {
-            let zoomLevel, centerCoordinates, pitch;
-
-            switch (lineId) {
-                case 'line1':
-                    zoomLevel = 12.08;
-                    centerCoordinates = [121.007043, 14.595964];
-                    pitch = 40;
-                    break;
-                case 'line2':
-                    zoomLevel = 12.56;
-                    centerCoordinates = [121.048054, 14.605247];
-                    pitch = 40;
-                    break;
-                case 'line3':
-                    zoomLevel = 11.96;
-                    centerCoordinates = [121.042244, 14.586893];
-                    pitch = 40;
-                    break;
-
-                default:
-                    zoomLevel = 12;
-                    centerCoordinates = [121.03, 14.57];
-                    pitch = 1;
-            }
-
-            map.flyTo({
-                center: centerCoordinates,
-                zoom: zoomLevel,
-                pitch: pitch,
-                essential: true
-            });
-
+            // Hide all lines
             map.setLayoutProperty('line1', 'visibility', 'none');
             map.setLayoutProperty('line2', 'visibility', 'none');
             map.setLayoutProperty('line3', 'visibility', 'none');
 
+            // Show the selected line
             map.setLayoutProperty(lineId, 'visibility', 'visible');
 
+            // Remove active class from all buttons
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
             });
 
+            // Add active class to the clicked button
             document.querySelector('.btn-line-' + lineId).classList.add('active');
         }
 
         function toggleAllLines() {
+            // Show all lines
             map.setLayoutProperty('line1', 'visibility', 'visible');
             map.setLayoutProperty('line2', 'visibility', 'visible');
             map.setLayoutProperty('line3', 'visibility', 'visible');
 
+            // Remove active class from all buttons
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
             });
 
+            // Add active class to the "All Lines" button
             document.querySelector('.btn-line-all').classList.add('active');
         }
     </script>
