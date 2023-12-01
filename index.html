@@ -20,7 +20,7 @@
         .landing-page {
             position: relative;
             height: 100vh;
-            background: url('mrt-traffic-transfortation-afp-20140908-003.webp') center/cover no-repeat;
+            background: url('your-image.jpg') center/cover no-repeat;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -99,7 +99,7 @@
 <body>
 
     <!-- Landing Page Section -->
-    <div class="landing-page" id="landing">
+    <div class="landing-page" id="landing" onclick="scrollToMap()">
         <div class="blur-overlay"></div>
         <div class="landing-text">
             <h1>Welcome to Metro Manila Mass Transit Operations</h1>
@@ -322,21 +322,12 @@
             document.querySelector('.btn-line-all').classList.add('active');
         }
 
-        // Smooth scrolling to map section when clicking on the scroll-down button
-        document.getElementById('scroll-down').addEventListener('click', function () {
+        // Smooth scrolling to map section when clicking anywhere on the landing page
+        function scrollToMap() {
             document.getElementById('map').scrollIntoView({
                 behavior: 'smooth'
             });
-        });
-
-        // Smooth scrolling to map section when scrolling down from the landing page
-        window.addEventListener('wheel', function (e) {
-            if (e.deltaY > 0) {
-                document.getElementById('map').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+        }
     </script>
 
 </body>
