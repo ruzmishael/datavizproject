@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -58,6 +58,34 @@
         .btn-line-all.active {
             background-color: turquoise;
         }
+
+        .info-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 4px;
+            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            opacity: 1;
+        }
+
+        #external-info-box {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            bottom: 10px; /* Extend to near bottom */
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 4px;
+            color: #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            opacity: 0.5;
+            overflow-y: auto; /* Enable scrolling if content exceeds the box height */
+        }
     </style>
 </head>
 
@@ -72,10 +100,24 @@
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
+    <div class="info-box">
+        <h4>Station Information</h4>
+        <div id="station-info">
+            <p>This is a sample short essay or information that you want to display in the info-box. You can replace this text with your actual content. Feel free to format it as needed and provide any additional details you want to share.</p>
+        </div>
+    </div>
+
+    <div id="external-info-box">
+        <h4>Additional Information</h4>
+        <p>This is an external text box for additional information. You can customize the content and styling as needed. It extends to the near bottom of the screen and has 50% opacity. This area can be used for providing more details or any other relevant information.</p>
+        <!-- Add more content as needed -->
+    </div>
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
         var map = new mapboxgl.Map({
