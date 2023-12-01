@@ -58,6 +58,22 @@
         .btn-line-all.active {
             background-color: turquoise;
         }
+
+        .info-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* Opacity set to 50% */
+            padding: 10px;
+            border-radius: 4px;
+            color: #333; /* Dark gray text color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        #station-info {
+            opacity: 1; /* Full opacity for the text box */
+        }
     </style>
 </head>
 
@@ -72,10 +88,18 @@
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
+    <div class="info-box">
+        <h4>Station Information</h4>
+        <div id="station-info">
+            <p>This is a sample short essay or information that you want to display in the info-box. You can replace this text with your actual content. Feel free to format it as needed and provide any additional details you want to share.</p>
+        </div>
+    </div>
+
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
     
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
