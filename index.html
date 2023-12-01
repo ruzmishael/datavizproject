@@ -131,15 +131,8 @@
                 type: 'circle',
                 source: 'line1',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5,
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5,
+                    'circle-radius': 7,
+                    'circle-color': '#4dc262'
                 },
                 layout: {
                     'visibility': 'none'
@@ -151,15 +144,8 @@
                 type: 'circle',
                 source: 'line2',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5,  
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5, 
+                    'circle-radius': 7,
+                    'circle-color': '#800080'
                 },
                 layout: {
                     'visibility': 'none'
@@ -171,15 +157,8 @@
                 type: 'circle',
                 source: 'line3',
                 paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['get', 'daily_ridership'],
-                        0, 5, 
-                        100000, 20,
-                    ],
-                    'circle-color': '#ab4e52',
-                    'circle-opacity': 0.5,
+                    'circle-radius': 7,
+                    'circle-color': '#0000ff'
                 },
                 layout: {
                     'visibility': 'none'
@@ -255,25 +234,25 @@
 
             switch (lineId) {
                 case 'line1':
-                    zoomLevel = 11.4;
+                    zoomLevel = 12.08;
                     centerCoordinates = [121.007043, 14.595964];
-                    pitch = 0;
+                    pitch = 40;
                     break;
                 case 'line2':
                     zoomLevel = 12.56;
-                    centerCoordinates = [121.048054, 14.605247];
-                    pitch = 0;
+                    centerCoordinates = [121.048054, 14.605247]; 
+                    pitch = 40;
                     break;
                 case 'line3':
-                    zoomLevel = 11.4;
-                    centerCoordinates = [121.042244, 14.586893];
-                    pitch = 0;
+                    zoomLevel = 11.96;
+                    centerCoordinates = [121.042244, 14.586893]; 
+                    pitch = 40;
                     break;
 
                 default:
                     zoomLevel = 12;
                     centerCoordinates = [121.03, 14.57];
-                    pitch = 40;
+                    pitch = 0;
             }
 
             map.flyTo({
