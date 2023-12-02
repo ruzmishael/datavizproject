@@ -125,83 +125,95 @@
         });
 
         map.on('load', function () {
-    map.addSource('line1', {
-        type: 'geojson',
-        data: 'line1.geojson' // Replace with the correct path
-    });
+            map.addSource('line1', {
+                type: 'geojson',
+                data: 'line1.geojson' // Replace with the correct path
+            });
 
-    map.addSource('line2', {
-        type: 'geojson',
-        data: 'line2.geojson' // Replace with the correct path
-    });
+            map.addSource('line2', {
+                type: 'geojson',
+                data: 'line2.geojson' // Replace with the correct path
+            });
 
-    map.addSource('line3', {
-        type: 'geojson',
-        data: 'line3.geojson' // Replace with the correct path
-    });
+            map.addSource('line3', {
+                type: 'geojson',
+                data: 'line3.geojson' // Replace with the correct path
+            });
 
-    function getCircleColor(dailyRidership, lineColor) {
-        // Calculate color intensity based on daily ridership
-        var intensity = dailyRidership / 100000; // Adjust this factor as needed
-        // Interpolate color based on intensity
-        return [
-            'interpolate',
-            ['linear'],
-            ['get', 'daily_ridership'],
-            0, lineColor + '00',
-            100000, lineColor + 'FF'
-        ];
-    }
+            map.addLayer({
+                id: 'line1',
+                type: 'circle',
+                source: 'line1',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#FDE4D6',
+                        100000, '#7a0177'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
-    function getCircleRadius(dailyRidership) {
-        // Adjust this scale factor as needed
-        return [
-            'interpolate',
-            ['linear'],
-            ['get', 'daily_ridership'],
-            0, 4,
-            100000, 20
-        ];
-    }
+            map.addLayer({
+                id: 'line2',
+                type: 'circle',
+                source: 'line2',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#f2e6f1',
+                        100000, '#F37634'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
-    map.addLayer({
-        id: 'line1',
-        type: 'circle',
-        source: 'line1',
-        paint: {
-            'circle-radius': getCircleRadius,
-            'circle-color': getCircleColor.bind(null, '#FDE4D6'),
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
-
-    map.addLayer({
-        id: 'line2',
-        type: 'circle',
-        source: 'line2',
-        paint: {
-            'circle-radius': getCircleRadius,
-            'circle-color': getCircleColor.bind(null, '#f2e6f1'),
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
-
-    map.addLayer({
-        id: 'line3',
-        type: 'circle',
-        source: 'line3',
-        paint: {
-            'circle-radius': getCircleRadius,
-            'circle-color': getCircleColor.bind(null, '#f2e6f1'),
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
+            map.addLayer({
+                id: 'line3',
+                type: 'circle',
+                source: 'line3',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#f2e6f1',
+                        100000, '#7a0177'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
             // Hover function for Line 1
             map.on('mouseenter', 'line1', function (e) {
