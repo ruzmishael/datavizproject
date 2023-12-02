@@ -16,27 +16,8 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        /* New styles for the title page */
-        #title-page {
-            position: relative;
             height: 100vh;
-            background: url('path/to/your/image.jpg') center/cover no-repeat; /* Replace 'path/to/your/image.jpg' with your image path */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        #title-content {
-            max-width: 600px;
-        }
-
-        #start-now-button {
-            margin-top: 20px;
+            font-family: 'Rubik', sans-serif;
         }
 
         #map {
@@ -93,31 +74,10 @@
             padding: 10px;
             overflow-y: auto;
         }
-        text-box {
-            position: absolute;
-            top: 0;
-            right: 10;
-            width: 20%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 1);
-            padding: 10px;
-            overflow-y: auto;
-        }
     </style>
 </head>
 
 <body>
-
-    <!-- Title page -->
-    <div id="title-page">
-        <div id="title-content">
-            <h1>Metro Manila Mass Transit Operations</h1>
-            <p>Riles MNL</p>
-            <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
-            <p>Thank you.</p>
-            <button id="start-now-button" class="btn btn-info" onclick="scrollToMaps()">Start Now</button>
-        </div>
-    </div>
 
     <div id="map"></div>
 
@@ -377,8 +337,6 @@
                 pitch: 0,
                 essential: true
             });
-            function scrollToMaps() {
-            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 
