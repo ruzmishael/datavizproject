@@ -20,28 +20,6 @@
             font-family: 'Rubik', sans-serif;
         }
 
-        #title-section {
-            background: url('your-image.jpg') center/cover no-repeat; /* Replace 'your-image.jpg' with your image path */
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-        }
-
-        #title-section h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        #title-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-
-        #start-now-btn {
-            font-size: 1.5em;
-        }
-
         #map {
             flex: 1;
         }
@@ -100,12 +78,6 @@
 </head>
 
 <body>
-
-    <div id="title-section">
-        <h1>Metro Manila Mass Transit Operations</h1>
-        <p>Riles MNL: Empowering You with Mass Transit Information</p>
-        <button id="start-now-btn" class="btn btn-primary" onclick="scrollToMaps()">Start now</button>
-    </div>
 
     <div id="map"></div>
 
@@ -365,9 +337,6 @@
                 pitch: 0,
                 essential: true
             });
-
-            function scrollToMaps() {
-            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 
