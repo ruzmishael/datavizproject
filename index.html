@@ -238,53 +238,54 @@
         });
 
         function toggleLine(lineId) {
-            let zoomLevel, centerCoordinates, pitch;
+    let zoomLevel, centerCoordinates, pitch;
 
-            switch (lineId) {
-                case 'line1':
-                    zoomLevel = 12.08;
-                    centerCoordinates = [121.007043, 14.595964];
-                    pitch = 40;
-                    break;
-                case 'line2':
-                    zoomLevel = 12.56;
-                    centerCoordinates = [121.048054, 14.605247];
-                    pitch = 40;
-                    break;
-                case 'line3':
-                    zoomLevel = 11.96;
-                    centerCoordinates = [121.042244, 14.586893];
-                    pitch = 40;
-                    break;
-                case 'all':
-                    zoomLevel = 12;
-                    centerCoordinates = [121.03, 14.57];
-                    pitch = 40; 
-                    break;
-                default:
-                    zoomLevel = 12;
-                    centerCoordinates = [121.03, 14.57];
-                    pitch = 0;
-            }
+    switch (lineId) {
+        case 'line1':
+            zoomLevel = 12.08;
+            centerCoordinates = [121.007043, 14.595964];
+            pitch = 40;
+            break;
+        case 'line2':
+            zoomLevel = 12.56;
+            centerCoordinates = [121.048054, 14.605247];
+            pitch = 40;
+            break;
+        case 'line3':
+            zoomLevel = 11.96;
+            centerCoordinates = [121.042244, 14.586893];
+            pitch = 40;
+            break;
+        case 'all': // Add colon here
+            zoomLevel = 12;
+            centerCoordinates = [121.03, 14.57];
+            pitch = 40; 
+            break;
+        default:
+            zoomLevel = 12;
+            centerCoordinates = [121.03, 14.57];
+            pitch = 0;
+    }
 
-            map.flyTo({
-                center: centerCoordinates,
-                zoom: zoomLevel,
-                pitch: pitch,
-                essential: true
-            });
+    map.flyTo({
+        center: centerCoordinates,
+        zoom: zoomLevel,
+        pitch: pitch,
+        essential: true
+    });
 
-            map.setLayoutProperty('line1', 'visibility', 'none');
-            map.setLayoutProperty('line2', 'visibility', 'none');
-            map.setLayoutProperty('line3', 'visibility', 'none');
+    map.setLayoutProperty('line1', 'visibility', 'none');
+    map.setLayoutProperty('line2', 'visibility', 'none');
+    map.setLayoutProperty('line3', 'visibility', 'none');
 
-            map.setLayoutProperty(lineId, 'visibility', 'visible');
+    map.setLayoutProperty(lineId, 'visibility', 'visible');
 
-            document.querySelectorAll('.btn-line').forEach(function (btn) {
-                btn.classList.remove('active');
-            });
+    document.querySelectorAll('.btn-line').forEach(function (btn) {
+        btn.classList.remove('active');
+    });
 
-            document.querySelector('.btn-line-' + lineId).classList.add('active');
+    document.querySelector('.btn-line-' + lineId).classList.add('active');
+}
         }
 
         function toggleAllLines() {
