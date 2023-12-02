@@ -278,6 +278,7 @@
             }
 
             document.querySelector('.text-box').innerHTML = content;
+        } // Fixed the missing closing brace here
 
         function toggleLine(lineId) {
             let zoomLevel, centerCoordinates, pitch, buttonColor;
@@ -347,7 +348,7 @@
                 btn.classList.remove('active');
                 btn.style.backgroundColor = '#ccc'; // Reset background color for all buttons
             });
-            
+
             var allLinesButton = document.querySelector('.btn-line-all');
             allLinesButton.classList.add('active');
             allLinesButton.style.backgroundColor = 'black';
