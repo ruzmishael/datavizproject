@@ -286,15 +286,29 @@
 
             document.querySelector('.btn-line-' + lineId).classList.add('active');
         }
-
         function toggleAllLines() {
+            let zoomLevel = 12;
+            let centerCoordinates = [121.03, 14.57];
+            let pitch = 40;
+            
+            map.flyTo({
+                center: centerCoordinates,
+                zoom: zoomLevel,
+                pitch: pitch,
+                essential: true
+            });
+            
             map.setLayoutProperty('line1', 'visibility', 'visible');
             map.setLayoutProperty('line2', 'visibility', 'visible');
             map.setLayoutProperty('line3', 'visibility', 'visible');
-
+            
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
-            });
+    });
+
+    document.querySelector('.btn-line-all').classList.add('active');
+}
+
 
             document.querySelector('.btn-line-all').classList.add('active');
         }
