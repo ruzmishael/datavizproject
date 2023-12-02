@@ -4,49 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metro Manila Mass Transit Explorer</title>
+    <title>Metro Manila Mass Transit Operations</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
         body {
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
             font-family: 'Rubik', sans-serif;
         }
 
-        #landing {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: url('mrt-traffic-transfortation-afp-20140908-003.webp.jpg') no-repeat center center fixed;
-            background-size: cover;
-            filter: grayscale(100%);
-            color: #fff;
-        }
-
-        .overlay {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-        }
-
-        .btn-start-exploring {
-            font-size: 1.5em;
-            padding: 10px 20px;
-        }
-
-        #map-container {
+        #map {
             flex: 1;
         }
 
@@ -64,36 +38,61 @@
             justify-content: center;
         }
 
-        /* Add any additional styles for the map section here */
+        .btn-line {
+            margin: 0 5px;
+            background-color: #ccc;
+            border-radius: 10px;
+            padding: 8px 16px;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .btn-line-line1.active {
+            background-color: green;
+        }
+
+        .btn-line-line2.active {
+            background-color: purple;
+        }
+
+        .btn-line-line3.active {
+            background-color: blue;
+        }
+
+        .btn-line-all.active {
+            background-color: turquoise;
+        }
+
+        /* New styles for the text box */
+        .text-box {
+            position: absolute;
+            top: 0;
+            right: 10;
+            width: 20%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 1);
+            padding: 10px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
 <body>
 
-    <div id="landing">
-        <div class="overlay">
-            <h1>Metro Manila Mass Transit Explorer</h1>
-            <p>Explore the mass transit systems in Metro Manila and make informed transportation choices.</p>
-            <a href="#map-container" class="btn btn-info btn-start-exploring">Start exploring</a>
-        </div>
+    <div id="map"></div>
+
+    <div class="map-overlay">
+        <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
+        <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
-    <div id="map-container">
-        <div id="map"></div>
-
-        <div class="map-overlay">
-            <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
-            <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
-            <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
-            <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
-        </div>
-
-        <!-- New text box -->
-        <div class="text-box">
-            <h2>Riles MNL</h2>
-            <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
-            <p>Thank you.</p>
-        </div>
+    <!-- New text box -->
+    <div class="text-box">
+        <h2>Riles MNL</h2>
+        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
+        <p>Thank you.</p>
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
