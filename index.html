@@ -269,7 +269,7 @@
                     zoomLevel = 12;
                     centerCoordinates = [121.03, 14.57];
                     pitch = 0;
-                    buttonColor = ''; // Add a default color or leave it empty
+                    buttonColor = 'gray';
             }
 
             map.flyTo({
@@ -287,7 +287,7 @@
 
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
-                btn.style.backgroundColor = '#ccc'; // Reset background color for all buttons
+                btn.style.backgroundColor = '#ccc';
             });
 
             var activeButton = document.querySelector('.btn-line-' + lineId);
@@ -302,12 +302,11 @@
 
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
-                btn.style.backgroundColor = '#ccc'; // Reset background color for all buttons
+                btn.style.backgroundColor = '#ccc';
             });
 
             document.querySelector('.btn-line-all').classList.add('active');
 
-            // Set default zoom and pitch when All Lines button is clicked
             map.flyTo({
                 center: [121.03, 14.57],
                 zoom: 11,
