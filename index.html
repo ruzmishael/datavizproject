@@ -20,32 +20,6 @@
             font-family: 'Rubik', sans-serif;
         }
 
-        #title-page {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .greyscale-photo {
-            width: 100%;
-            max-width: 600px;
-            filter: grayscale(100%);
-        }
-
-        #title-page h1 {
-            margin-top: 20px;
-            font-size: 2em;
-        }
-
-        #title-page p {
-            font-size: 1.2em;
-        }
-
-        #title-page label {
-            display: block;
-            margin-top: 20px;
-            font-size: 1.5em;
-        }
-
         #map {
             flex: 1;
         }
@@ -100,37 +74,25 @@
             padding: 10px;
             overflow-y: auto;
         }
-
-        /* Other styles */
     </style>
 </head>
 
 <body>
 
-    <!-- Title Page -->
-    <div id="title-page">
-        <img src="mrt-traffic-transfortation-afp-20140908-003.webp" alt="Greyscale Photo" class="greyscale-photo">
-        <h1>Metro Manila Mass Transit Operations</h1>
-        <p>Welcome to Riles MNL - your guide to Metro Manila Mass Transit. Explore the transit lines, ridership data, and more.</p>
-        <label for="start-now-radio">Start now</label>
-        <input type="radio" id="start-now-radio" name="start-radio" onclick="showMapSection()">
+    <div id="map"></div>
+
+    <div class="map-overlay">
+        <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
+        <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
+        <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
-    <!-- Map Section -->
-    <div id="map-section" style="display: none;">
-        <div id="map"></div>
-        <div class="map-overlay">
-            <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
-            <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
-            <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
-            <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
-        </div>
-        <!-- New text box -->
-        <div class="text-box">
-            <h2>Riles MNL</h2>
-            <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
-            <p>Thank you.</p>
-        </div>
+    <!-- New text box -->
+    <div class="text-box">
+        <h2>Riles MNL</h2>
+        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
+        <p>Thank you.</p>
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
@@ -363,10 +325,10 @@
                 btn.classList.remove('active');
                 btn.style.backgroundColor = '#ccc'; // Reset background color for all buttons
             });
-
+            
             var allLinesButton = document.querySelector('.btn-line-all');
             allLinesButton.classList.add('active');
-            allLinesButton.style.backgroundColor = 'black';
+            allLinesButton.style.backgroundColor = 'black';            
 
             // Set default zoom and pitch when All Lines button is clicked
             map.flyTo({
@@ -375,11 +337,6 @@
                 pitch: 0,
                 essential: true
             });
-        }
-
-        function showMapSection() {
-            document.getElementById('title-page').style.display = 'none';
-            document.getElementById('map-section').style.display = 'block';
         }
     </script>
 
