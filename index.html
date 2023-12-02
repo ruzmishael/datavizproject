@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,10 @@
         body {
             margin: 0;
             padding: 0;
+            font-family: 'Rubik', sans-serif;
+        }
+
+        #landing {
             height: 100vh;
             display: flex;
             align-items: center;
@@ -18,7 +22,6 @@
             background-size: cover;
             filter: grayscale(100%);
             color: #fff;
-            font-family: 'Rubik', sans-serif;
         }
 
         .overlay {
@@ -42,16 +45,40 @@
             font-size: 1.5em;
             padding: 10px 20px;
         }
+
+        #map-container {
+            flex: 1;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            background-color: transparent;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Add any additional styles for the map section here */
     </style>
 </head>
 
 <body>
 
-    <div class="overlay">
-        <h1>Metro Manila Mass Transit Explorer</h1>
-        <p>Explore the mass transit systems in Metro Manila and make informed transportation choices.</p>
-        <a href="#map" class="btn btn-info btn-start-exploring">Start exploring</a>
+    <div id="landing">
+        <div class="overlay">
+            <h1>Metro Manila Mass Transit Explorer</h1>
+            <p>Explore the mass transit systems in Metro Manila and make informed transportation choices.</p>
+            <a href="#map-container" class="btn btn-info btn-start-exploring">Start exploring</a>
+        </div>
     </div>
+
+    <div id="map-container">
 
     <div id="map"></div>
 
