@@ -106,98 +106,114 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
-        center: [121.03, 14.57],
-        zoom: 12,
-        minZoom: 11,
-        maxZoom: 15,
-        pitch: 40,
-    });
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
+            center: [121.03, 14.57],
+            zoom: 12,
+            minZoom: 11,
+            maxZoom: 15,
+            pitch: 40,
+        });
 
-    map.addControl(new mapboxgl.NavigationControl());
+        map.addControl(new mapboxgl.NavigationControl());
 
-    var popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
-    });
+        var popup = new mapboxgl.Popup({
+            closeButton: false,
+            closeOnClick: false
+        });
 
-    map.addLayer({
-        id: 'line1',
-        type: 'circle',
-        source: 'line1',
-        paint: {
-            'circle-radius': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, 4,
-                100000, 20 // Adjust the values as needed
-            ],
-            'circle-color': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, '#f2e6f1',
-                100000, '#7a0177' // Adjust the values as needed
-            ]
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
+        map.on('load', function () {
+            map.addSource('line1', {
+                type: 'geojson',
+                data: 'path/to/line1.geojson' // Replace with the correct path
+            });
 
-    map.addLayer({
-        id: 'line2',
-        type: 'circle',
-        source: 'line2',
-        paint: {
-            'circle-radius': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, 4,
-                100000, 20 // Adjust the values as needed
-            ],
-            'circle-color': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, '#f2e6f1',
-                100000, '#7a0177' // Adjust the values as needed
-            ]
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
+            map.addSource('line2', {
+                type: 'geojson',
+                data: 'path/to/line2.geojson' // Replace with the correct path
+            });
 
-    map.addLayer({
-        id: 'line3',
-        type: 'circle',
-        source: 'line3',
-        paint: {
-            'circle-radius': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, 4,
-                100000, 20 // Adjust the values as needed
-            ],
-            'circle-color': [
-                'interpolate',
-                ['linear'],
-                ['get', 'daily_ridership'],
-                0, '#f2e6f1',
-                100000, '#7a0177' // Adjust the values as needed
-            ]
-        },
-        layout: {
-            'visibility': 'none'
-        }
-    });
+            map.addSource('line3', {
+                type: 'geojson',
+                data: 'path/to/line3.geojson' // Replace with the correct path
+            });
+
+            map.addLayer({
+                id: 'line1',
+                type: 'circle',
+                source: 'line1',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#f2e6f1',
+                        100000, '#7a0177'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line2',
+                type: 'circle',
+                source: 'line2',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#f2e6f1',
+                        100000, '#7a0177'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'line3',
+                type: 'circle',
+                source: 'line3',
+                paint: {
+                    'circle-radius': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, 4,
+                        100000, 20
+                    ],
+                    'circle-color': [
+                        'interpolate',
+                        ['linear'],
+                        ['get', 'daily_ridership'],
+                        0, '#f2e6f1',
+                        100000, '#7a0177'
+                    ]
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
             // Hover function for Line 1
             map.on('mouseenter', 'line1', function (e) {
