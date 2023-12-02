@@ -306,8 +306,10 @@
                 btn.classList.remove('active');
                 btn.style.backgroundColor = '#ccc'; // Reset background color for all buttons
             });
-
-            document.querySelector('.btn-line-all').classList.add('active');
+            
+            var allLinesButton = document.querySelector('.btn-line-all');
+            allLinesButton.classList.add('active');
+            allLinesButton.style.backgroundColor = 'turquoise';            
 
             // Set default zoom and pitch when All Lines button is clicked
             map.flyTo({
