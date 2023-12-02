@@ -124,60 +124,80 @@
         closeOnClick: false
     });
 
-    map.on('load', function () {
-        map.addSource('line1', {
-            type: 'geojson',
-            data: 'line1.geojson' // Replace with the correct path to your GeoJSON file
-        });
+    map.addLayer({
+        id: 'line1',
+        type: 'circle',
+        source: 'line1',
+        paint: {
+            'circle-radius': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, 4,
+                100000, 20 // Adjust the values as needed
+            ],
+            'circle-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, '#f2e6f1',
+                100000, '#7a0177' // Adjust the values as needed
+            ]
+        },
+        layout: {
+            'visibility': 'none'
+        }
+    });
 
-        map.addSource('line2', {
-            type: 'geojson',
-            data: 'line2.geojson' // Replace with the correct path to your GeoJSON file
-        });
+    map.addLayer({
+        id: 'line2',
+        type: 'circle',
+        source: 'line2',
+        paint: {
+            'circle-radius': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, 4,
+                100000, 20 // Adjust the values as needed
+            ],
+            'circle-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, '#f2e6f1',
+                100000, '#7a0177' // Adjust the values as needed
+            ]
+        },
+        layout: {
+            'visibility': 'none'
+        }
+    });
 
-        map.addSource('line3', {
-            type: 'geojson',
-            data: 'line3.geojson' // Replace with the correct path to your GeoJSON file
-        });
-
-        map.addLayer({
-            id: 'line1',
-            type: 'circle',
-            source: 'line1',
-            paint: {
-                'circle-radius': 7,
-                'circle-color': '#4dc262'
-            },
-            layout: {
-                'visibility': 'none'
-            }
-        });
-
-        map.addLayer({
-            id: 'line2',
-            type: 'circle',
-            source: 'line2',
-            paint: {
-                'circle-radius': 7,
-                'circle-color': '#800080'
-            },
-            layout: {
-                'visibility': 'none'
-            }
-        });
-
-        map.addLayer({
-            id: 'line3',
-            type: 'circle',
-            source: 'line3',
-            paint: {
-                'circle-radius': 7,
-                'circle-color': '#0000ff'
-            },
-            layout: {
-                'visibility': 'none'
-            }
-        });
+    map.addLayer({
+        id: 'line3',
+        type: 'circle',
+        source: 'line3',
+        paint: {
+            'circle-radius': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, 4,
+                100000, 20 // Adjust the values as needed
+            ],
+            'circle-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'daily_ridership'],
+                0, '#f2e6f1',
+                100000, '#7a0177' // Adjust the values as needed
+            ]
+        },
+        layout: {
+            'visibility': 'none'
+        }
+    });
 
             // Hover function for Line 1
             map.on('mouseenter', 'line1', function (e) {
