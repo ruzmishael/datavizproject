@@ -62,6 +62,18 @@
         .btn-line-all.active {
             background-color: turquoise;
         }
+
+        /* New styles for the text box */
+        .text-box {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            overflow-y: auto;
+        }
     </style>
 </head>
 
@@ -74,6 +86,13 @@
         <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
         <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
+    </div>
+
+    <!-- New text box -->
+    <div class="text-box">
+        <h2>Example Essay</h2>
+        <p>This is an example essay that you can replace with your own content. You can use this text box to provide information, descriptions, or any other relevant content for your webpage.</p>
+        <p>Feel free to customize the styles and content according to your needs.</p>
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
