@@ -33,6 +33,8 @@
 
         .title-content {
             max-width: 50%;
+            text-align: center;
+            margin: 0 auto; /* Center horizontally */
         }
 
         .start-button {
@@ -126,6 +128,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        function startApp() {
+            document.getElementById("map").style.display = "block";
         function startApp() {
             document.getElementById("map").style.display = "block";
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
