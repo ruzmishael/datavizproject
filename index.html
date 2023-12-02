@@ -20,30 +20,8 @@
             font-family: 'Rubik', sans-serif;
         }
 
-        .title-page {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            height: 100vh;
-            background: url('mrt-traffic-transfortation-afp-20140908-003.webp') center/cover no-repeat; /* Replace 'your-greyscale-image.jpg' with your image URL */
-            color: white;
-            text-align: left;
-        }
-
-        .title-content {
-            max-width: 50%;
-            text-align: center;
-            margin: 0 auto; /* Center horizontally */
-        }
-
-        .start-button {
-            margin-top: 20px;
-        }
-
         #map {
             flex: 1;
-            display: none; /* Initially hide the map */
         }
 
         .map-overlay {
@@ -85,6 +63,7 @@
             background-color: turquoise;
         }
 
+        /* New styles for the text box */
         .text-box {
             position: absolute;
             top: 0;
@@ -100,14 +79,6 @@
 
 <body>
 
-    <div class="title-page">
-        <div class="title-content">
-            <h1>Riles MNL</h1>
-            <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems...</p>
-        </div>
-        <button type="button" class="btn btn-primary start-button" onclick="startApp()">Start now</button>
-    </div>
-
     <div id="map"></div>
 
     <div class="map-overlay">
@@ -117,9 +88,10 @@
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
+    <!-- New text box -->
     <div class="text-box">
         <h2>Riles MNL</h2>
-        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems...</p>
+        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
         <p>Thank you.</p>
     </div>
 
@@ -128,10 +100,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function startApp() {
-            document.getElementById("map").style.display = "block";
-        function startApp() {
-            document.getElementById("map").style.display = "block";
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
         var map = new mapboxgl.Map({
             container: 'map',
