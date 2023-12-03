@@ -20,6 +20,10 @@
             font-family: 'Rubik', sans-serif;
         }
 
+        .hide-element {
+            display: none;
+        }
+
         #map {
             flex: 1;
             width: -70%;
@@ -410,14 +414,13 @@
             updateTextBoxContent('all');
         }
         function showMap() {
-            // Hide the landing page
-            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('landing-page').classList.add('hide-element');
 
-            // Show the map and associated elements
-            document.getElementById('map').style.display = 'block';
-            document.querySelector('.map-overlay').style.display = 'flex';
-            document.querySelector('.text-box').style.display = 'block';
-        }
+            document.getElementById('map').classList.remove('hide-element');
+            document.querySelector('.map-overlay').classList.remove('hide-element');
+            document.querySelector('.text-box').classList.remove('hide-element');
+}
+
     </script>
 
 </body>
