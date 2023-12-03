@@ -114,6 +114,8 @@
         </div>
     </div>
 
+    <div id="map" class="hide-element"></div>
+
     <div id="map"></div>
 
     <div class="map-overlay">
@@ -295,7 +297,17 @@
             // Show map overlay and text box after the map is loaded
             document.querySelector('.map-overlay').style.display = 'flex';
             document.querySelector('.text-box').style.display = 'block';
+
+            showMap();
         });
+
+        function showMap() {
+            document.getElementById('landing-page').style.display = 'none';
+
+            document.getElementById('map').classList.remove('hide-element');
+            document.querySelector('.map-overlay').classList.remove('hide-element');
+            document.querySelector('.text-box').classList.remove('hide-element');
+        }
 
         function updateTextBoxContent(lineId) {
             let content = '';
