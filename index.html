@@ -59,7 +59,7 @@
             padding: 10px;
             border-radius: 4px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
+            display: none; /* Hide initially */
             /* Hide initially */
             justify-content: center;
         }
@@ -74,7 +74,7 @@
             background-color: rgba(242, 238, 222, 1);
             padding: 10px;
             overflow-y: auto;
-            display: none;
+            display: none; /* Hide initially */
         }
 
         .btn-line,
@@ -103,18 +103,6 @@
             background-color: turquoise;
         }
 
-        /* New styles for the text box */
-        .text-box {
-            position: absolute;
-            top: 0;
-            right: 10;
-            width: 25%;
-            height: 100%;
-            background-color: rgba(242, 238, 222, 1);
-            padding: 10px;
-            overflow-y: auto;
-            display: none; /* Hide initially */
-        }
     </style>
 </head>
 
@@ -130,7 +118,7 @@
 
     <div id="map" class="hide-element"></div>
 
-    <div class="map-overlay">
+    <div class="map-overlay hide-element">
         <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
         <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
         <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
@@ -145,7 +133,7 @@
         <p>Thank you.</p>
     </div>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <<script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -308,14 +296,12 @@
             });
 
             // Show map overlay and text box after the map is loaded
-            document.querySelector('.map-overlay').style.display = 'flex';
+            ddocument.querySelector('.map-overlay').style.display = 'flex';
             document.querySelector('.text-box').style.display = 'block';
-
-            showMap();
         });
 
         function showMap() {
-            document.getElementById('landing-page').style.display = 'none';
+            document.getElementById('landing-page').classList.add('hide-element');
 
             document.getElementById('map').classList.remove('hide-element');
             document.querySelector('.map-overlay').classList.remove('hide-element');
