@@ -313,8 +313,8 @@
             }
 
             document.querySelector('.text-box').innerHTML = content;
-        } // Fixed the missing closing brace here
-
+        }
+        
         function toggleLine(lineId) {
             let zoomLevel, centerCoordinates, pitch, buttonColor;
 
@@ -380,9 +380,9 @@
             var defaultPitch = 0;
 
             map.flyTo({
-                center: [120,98155, 14.5891],
-                zoom: 11.54,
-                pitch: 0,
+                center: defaultCenter,  // Fixed the typo and added square brackets
+                zoom: defaultZoom,
+                pitch: defaultPitch,
                 essential: true
             });
 
