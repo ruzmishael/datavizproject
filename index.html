@@ -106,7 +106,7 @@
             <h1>Riles MNL</h1>
             <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
             <p>Thank you.</p>
-            <a href="#map" class="btn btn-primary start-now-btn">Start now</a>
+            <a href="#map" class="btn btn-primary start-now-btn" onclick="showMap()">Start now</a>
         </div>
     </div>
 
@@ -408,6 +408,15 @@
             allLinesButton.classList.add('active');
             allLinesButton.style.backgroundColor = 'black';
             updateTextBoxContent('all');
+        }
+        function showMap() {
+            // Hide the landing page
+            document.getElementById('landing-page').style.display = 'none';
+
+            // Show the map and associated elements
+            document.getElementById('map').style.display = 'block';
+            document.querySelector('.map-overlay').style.display = 'flex';
+            document.querySelector('.text-box').style.display = 'block';
         }
     </script>
 
