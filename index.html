@@ -73,12 +73,34 @@
             height: 100%;
             background-color: rgba(242, 238, 222, 1);
             padding: 10px;
-            overflow-y: auto;
+            overflow-y: auto;   
         }
+        /* Styles for the information box */
+        .info-box {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+    }
+</style>
+        
+
+        
     </style>
 </head>
 
 <body>
+
+    <div class="info-box">
+        <h3>Map Information</h3>
+        <p><strong>Zoom:</strong> <span id="zoom-info">--</span></p>
+        <p><strong>Pitch:</strong> <span id="pitch-info">--</span></p>
+        <p><strong>Center Coordinates:</strong> <span id="coordinates-info">--</span></p>
+    </div>    
 
     <div id="map"></div>
 
@@ -257,7 +279,13 @@
             map.on('mouseleave', 'line3', function () {
                 map.getCanvas().style.cursor = '';
             });
-        });
+
+            map.on('move', function () {
+            // Update information box with current map information
+                document.getElementById('zoom-info').innerText = map.getZoom().toFixed(2);
+                document.getElementById('pitch-info').innerText = map.getPitch().toFixed(2);
+                document.getElementById('coordinates-info').innerText = map.getCenter().toArray().map(coord => coord.toFixed(5)).join(', ');
+            });
 
         function updateTextBoxContent(lineId) {
             let content = '';
