@@ -22,12 +22,13 @@
 
         #map {
             flex: 1;
+            width: -70%;
         }
 
-            .map-overlay {
+        .map-overlay {
             position: absolute;
             bottom: 20px;
-            left: 70%;
+            left: 65%;
             transform: translateX(-50%);
             z-index: 1;
             background-color: transparent;
@@ -64,15 +65,15 @@
         }
 
         /* New styles for the text box */
-         .text-box {
+        .text-box {
             position: absolute;
             top: 0;
             right: 10;
-            width: 30%;
+            width: 25%;
             height: 100%;
             background-color: rgba(242, 238, 222, 1);
             padding: 10px;
-            overflow-y: auto;
+            overflow-y: auto;   
         }
     </style>
 </head>
@@ -104,7 +105,7 @@
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
-            center: [121.03, 14.57],
+            center: [120.95788, 14.58901],
             zoom: 11,
             minZoom: 11,
             maxZoom: 15,
@@ -263,22 +264,22 @@
             switch (lineId) {
                 case 'line1':
                     content = '<h2>LRT-1</h2>' +
-                '<p>The Light Rail Transit Line 1 (LRT-1) in Metro Manila, inaugurated in 1984 as the first rapid transit line in the Philippines and Southeast Asia, connects the northern and southern parts of the metro, serving millions of commuters. Stretching 20.7 kilometers with 20 stations, LRT-1 links key areas like Baclaran, Pasay, Makati, Manila, and Caloocan, playing a crucial role in reducing traffic congestion and providing affordable transportation.</p>' +
-                '<p>Significantly contributing to the Metro Manila&#39;s public transportation system, LRT-1 has undergone expansions and improvements over the years. Notable nearby establishments include shopping malls, educational institutions, government offices, and cultural sites. The ongoing Cavite extension project aims to further enhance LRT-1&#39;s reach, connecting more communities and addressing the growing population&#39;s transportation needs.</p>' +
-                '<p>Despite challenges such as overcrowding and maintenance issues, discussions on modernization and expansion are in progress. Initiatives focus on improving passenger experience, enhancing safety measures, and implementing technology upgrades for the long-term sustainability and efficiency of LRT-1. It remains a vital component of Metro Manila&#39;s transit system, fostering economic activities and enhancing urban connectivity..</p>'; 
-            break;
+                        '<p>The Light Rail Transit Line 1 (LRT-1) in Metro Manila, inaugurated in 1984 as the first rapid transit line in the Philippines and Southeast Asia, connects the northern and southern parts of the metro, serving millions of commuters. Stretching 20.7 kilometers with 20 stations, LRT-1 links key areas like Baclaran, Pasay, Makati, Manila, and Caloocan, playing a crucial role in reducing traffic congestion and providing affordable transportation.</p>' +
+                        '<p>Significantly contributing to the Metro Manila&#39;s public transportation system, LRT-1 has undergone expansions and improvements over the years. Notable nearby establishments include shopping malls, educational institutions, government offices, and cultural sites. The ongoing Cavite extension project aims to further enhance LRT-1&#39;s reach, connecting more communities and addressing the growing population&#39;s transportation needs.</p>' +
+                        '<p>Despite challenges such as overcrowding and maintenance issues, discussions on modernization and expansion are in progress. Initiatives focus on improving passenger experience, enhancing safety measures, and implementing technology upgrades for the long-term sustainability and efficiency of LRT-1. It remains a vital component of Metro Manila&#39;s transit system, fostering economic activities and enhancing urban connectivity..</p>';
+                    break;
                 case 'line2':
                     content = '<h2>LRT-2</h2>' +
-                '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
-                '<p>Additional information about LRT-1...</p>';
-            break;
+                        '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
+                        '<p>Additional information about LRT-1...</p>';
+                    break;
                 case 'line3':
                     content = '<h2>MRT-3</h2>' +
-                '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
-                '<p>Additional information about LRT-1...</p>';
-            break;
+                        '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
+                        '<p>Additional information about LRT-1...</p>';
+                    break;
                 case 'all':
-                    content = '<h2>Interconnectivity</h2>' +
+            content = '<h2>Interconnectivity</h2>' +
                 '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
                 '<p>Additional information about LRT-1...</p>';
             break;
@@ -287,41 +288,41 @@
             }
 
             document.querySelector('.text-box').innerHTML = content;
-        } // Fixed the missing closing brace here
-
+        }
+        
         function toggleLine(lineId) {
             let zoomLevel, centerCoordinates, pitch, buttonColor;
 
             switch (lineId) {
                 case 'line1':
-                    zoomLevel = 12.08;
-                    centerCoordinates = [121.007043, 14.595964];
+                    zoomLevel = 12.15;
+                    centerCoordinates = [120.96509, 14.57425];
                     pitch = 40;
                     buttonColor = 'green';
                     break;
                 case 'line2':
-                    zoomLevel = 12.56;
-                    centerCoordinates = [121.048054, 14.605247];
+                    zoomLevel = 12.21;
+                    centerCoordinates = [121.01896, 14.60391];
                     pitch = 40;
                     buttonColor = 'purple';
                     break;
                 case 'line3':
-                    zoomLevel = 11.96;
-                    centerCoordinates = [121.042244, 14.586893];
+                    zoomLevel = 12.12;
+                    centerCoordinates = [120.99579, 14.57678];
                     pitch = 40;
                     buttonColor = 'blue';
                     break;
                 case 'all':
                     zoomLevel = 12;
-                    centerCoordinates = [121.03, 14.57];
+                    centerCoordinates = [121.00567, 14.58971];
                     pitch = 40;
                     buttonColor = 'black';
                     break;
                 default:
-                    zoomLevel = 12;
-                    centerCoordinates = [121.03, 14.57];
+                    zoomLevel = 10.45;
+                    centerCoordinates = [120.95607, 14.58194];
                     pitch = 0;
-                    buttonColor = ''; // Add a default color or leave it empty
+                    buttonColor = '';
             }
 
             map.flyTo({
@@ -349,6 +350,17 @@
         }
 
         function toggleAllLines() {
+            var defaultZoom = 11.54;
+            var defaultCenter = [120.98155, 14.5891];
+            var defaultPitch = 0;
+
+            map.flyTo({
+                center: defaultCenter,  // Fixed the typo and added square brackets
+                zoom: defaultZoom,
+                pitch: defaultPitch,
+                essential: true
+            });
+
             map.setLayoutProperty('line1', 'visibility', 'visible');
             map.setLayoutProperty('line2', 'visibility', 'visible');
             map.setLayoutProperty('line3', 'visibility', 'visible');
@@ -362,14 +374,6 @@
             allLinesButton.classList.add('active');
             allLinesButton.style.backgroundColor = 'black';
             updateTextBoxContent('all');
-
-            // Set default zoom and pitch when All Lines button is clicked
-            map.flyTo({
-                center: [121.03, 14.57],
-                zoom: 11,
-                pitch: 0,
-                essential: true
-            });
         }
     </script>
 
