@@ -25,7 +25,7 @@
             width: -70%;
         }
 
-            .map-overlay {
+        .map-overlay {
             position: absolute;
             bottom: 20px;
             left: 65%;
@@ -65,7 +65,7 @@
         }
 
         /* New styles for the text box */
-         .text-box {
+        .text-box {
             position: absolute;
             top: 0;
             right: 10;
@@ -85,11 +85,7 @@
             border-radius: 4px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 1;
-    }
-</style>
-        
-
-        
+        }
     </style>
 </head>
 
@@ -281,33 +277,34 @@
             });
 
             map.on('move', function () {
-            // Update information box with current map information
+                // Update information box with current map information
                 document.getElementById('zoom-info').innerText = map.getZoom().toFixed(2);
                 document.getElementById('pitch-info').innerText = map.getPitch().toFixed(2);
                 document.getElementById('coordinates-info').innerText = map.getCenter().toArray().map(coord => coord.toFixed(5)).join(', ');
             });
+        });
 
         function updateTextBoxContent(lineId) {
             let content = '';
             switch (lineId) {
                 case 'line1':
                     content = '<h2>LRT-1</h2>' +
-                '<p>The Light Rail Transit Line 1 (LRT-1) in Metro Manila, inaugurated in 1984 as the first rapid transit line in the Philippines and Southeast Asia, connects the northern and southern parts of the metro, serving millions of commuters. Stretching 20.7 kilometers with 20 stations, LRT-1 links key areas like Baclaran, Pasay, Makati, Manila, and Caloocan, playing a crucial role in reducing traffic congestion and providing affordable transportation.</p>' +
-                '<p>Significantly contributing to the Metro Manila&#39;s public transportation system, LRT-1 has undergone expansions and improvements over the years. Notable nearby establishments include shopping malls, educational institutions, government offices, and cultural sites. The ongoing Cavite extension project aims to further enhance LRT-1&#39;s reach, connecting more communities and addressing the growing population&#39;s transportation needs.</p>' +
-                '<p>Despite challenges such as overcrowding and maintenance issues, discussions on modernization and expansion are in progress. Initiatives focus on improving passenger experience, enhancing safety measures, and implementing technology upgrades for the long-term sustainability and efficiency of LRT-1. It remains a vital component of Metro Manila&#39;s transit system, fostering economic activities and enhancing urban connectivity..</p>'; 
-            break;
+                        '<p>The Light Rail Transit Line 1 (LRT-1) in Metro Manila, inaugurated in 1984 as the first rapid transit line in the Philippines and Southeast Asia, connects the northern and southern parts of the metro, serving millions of commuters. Stretching 20.7 kilometers with 20 stations, LRT-1 links key areas like Baclaran, Pasay, Makati, Manila, and Caloocan, playing a crucial role in reducing traffic congestion and providing affordable transportation.</p>' +
+                        '<p>Significantly contributing to the Metro Manila&#39;s public transportation system, LRT-1 has undergone expansions and improvements over the years. Notable nearby establishments include shopping malls, educational institutions, government offices, and cultural sites. The ongoing Cavite extension project aims to further enhance LRT-1&#39;s reach, connecting more communities and addressing the growing population&#39;s transportation needs.</p>' +
+                        '<p>Despite challenges such as overcrowding and maintenance issues, discussions on modernization and expansion are in progress. Initiatives focus on improving passenger experience, enhancing safety measures, and implementing technology upgrades for the long-term sustainability and efficiency of LRT-1. It remains a vital component of Metro Manila&#39;s transit system, fostering economic activities and enhancing urban connectivity..</p>';
+                    break;
                 case 'line2':
                     content = '<h2>LRT-2</h2>' +
-                '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
-                '<p>Additional information about LRT-1...</p>';
-            break;
+                        '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
+                        '<p>Additional information about LRT-1...</p>';
+                    break;
                 case 'line3':
                     content = '<h2>MRT-3</h2>' +
-                '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
-                '<p>Additional information about LRT-1...</p>';
-            break;
+                        '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
+                        '<p>Additional information about LRT-1...</p>';
+                    break;
                 case 'all':
-                    content = '<h2>Interconnectivity</h2>' +
+            content = '<h2>Interconnectivity</h2>' +
                 '<p>From 1976 to 1977, a fourteen-month study funded by the World Bank was conducted by Freeman Fox and Associates, and this suggested a street-level light railway. The then newly created Ministry of Transportation and Communications (MOTC) reviewed and revised the recommendations, introducing an elevated version because of the many intersections. This raised the cost from P1.5 billion to P2 billion. Another foreign firm was commissioned by MOTC for supplementary study which was completed within three months.</p>' +
                 '<p>Additional information about LRT-1...</p>';
             break;
