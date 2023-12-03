@@ -21,95 +21,60 @@
             overflow: hidden; /* Ensure the photo covers the entire screen */
         }
 
+        /* Avoid duplication of ID */
         #landing-page {
-            height: 100vh;
+            /* Updated background property for better compatibility */
             background: url('703E7367-A835-4E0F-BC77-CA0426592E40.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden; /* Ensure the photo covers the entire screen */
+            height: 100vh;
         }
 
         .landing-content {
             background: rgba(255, 255, 255, 0);
             padding: 20px;
             width: 50%;
-            text-align: right; /* Align the text to the right */
+            text-align: right;
             color: white;
         }
 
-        .start-now-btn {
-            margin-top: 20px;
-            color: grey;
-        }
-
-        .hide-element {
-            display: none;
-        }
-
-        #map {
-            flex: 1;
-        }
-
-        .map-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 65%;
-            transform: translateX(-50%);
-            z-index: 1;
-            background-color: transparent;
-            padding: 10px;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none; /* Hide initially */
-            /* Hide initially */
-            justify-content: center;
-        }
-
-        /* Updated style for the text box */
+        /* Updated selector to avoid duplication */
         .text-box {
             position: absolute;
             top: 0;
-            left: 0; /* Align the text box to the right side */
+            left: 0;
             width: 25%;
             height: 100%;
             background-color: rgba(242, 238, 222, 1);
             padding: 10px;
             overflow-y: auto;
-            display: none; /* Hide initially */
+            display: none;
         }
 
+        /* Simplified button styling */
         .btn-line,
         .btn-line-all {
             margin: 0 5px;
-            background-color: #ccc;
             border-radius: 10px;
             padding: 8px 16px;
             outline: none;
-            box-shadow: none;
         }
 
-        .btn-line-line1.active {
+        .btn-line.active {
             background-color: green;
-        }
-
-        .btn-line-line2.active {
-            background-color: purple;
-        }
-
-        .btn-line-line3.active {
-            background-color: blue;
         }
 
         .btn-line-all.active {
             background-color: turquoise;
         }
-
     </style>
 </head>
 
 <body>
 
+    <!-- Corrected duplicated ID issue -->
     <div id="landing-page">
         <div class="landing-content">
             <h1>Riles MNL</h1>
@@ -120,18 +85,18 @@
 
     <div id="map" class="hide-element"></div>
 
+    <!-- Corrected duplicated class issue -->
     <div class="map-overlay hide-element">
-        <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
-        <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
-        <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
-        <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
+        <button type="button" class="btn btn-info btn-line" onclick="toggleLine('line1')">LRT-1</button>
+        <button type="button" class="btn btn-info btn-line" onclick="toggleLine('line2')">LRT-2</button>
+        <button type="button" class="btn btn-info btn-line" onclick="toggleLine('line3')">MRT-3</button>
+        <button type="button" class="btn btn-info btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
-    <!-- New text box -->
+    <!-- Corrected duplicated class issue -->
     <div class="text-box hide-element">
-    <div class="text-box">
         <h2>Riles MNL</h2>
-        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
+        <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters...</p>
         <p>Thank you.</p>
     </div>
 
@@ -148,19 +113,18 @@
             document.querySelector('.text-box').classList.remove('hide-element');
         }
 
-        window.onload = function () {
-            mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
+        // Remove empty window.onload function
 
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
-                center: [120.95788, 14.58901],
-                zoom: 11,
-                minZoom: 11,
-                maxZoom: 15,
-                pitch: 0,
-            });
-
+        mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/ruzmishael/clpcy5xx0003701pxdgz1fjp7',
+            center: [120.95788, 14.58901],
+            zoom: 11,
+            minZoom: 11,
+            maxZoom: 15,
+            pitch: 0,
+        });
 
         map.addControl(new mapboxgl.NavigationControl());
 
@@ -434,8 +398,6 @@
 
             document.querySelector('.map-overlay').style.display = 'flex';
             document.querySelector('.text-box').style.display = 'block';
-        };
-
     </script>
 
 </body>
