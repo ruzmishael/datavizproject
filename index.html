@@ -375,6 +375,17 @@
         }
 
         function toggleAllLines() {
+            var defaultZoom = 11.54;
+            var defaultCenter = [120.98155, 14.5891];
+            var defaultPitch = 0;
+
+            map.flyTo({
+                center: [120,98155, 14.5891],
+                zoom: 11.54,
+                pitch: 0,
+                essential: true
+            });
+
             map.setLayoutProperty('line1', 'visibility', 'visible');
             map.setLayoutProperty('line2', 'visibility', 'visible');
             map.setLayoutProperty('line3', 'visibility', 'visible');
@@ -388,14 +399,6 @@
             allLinesButton.classList.add('active');
             allLinesButton.style.backgroundColor = 'black';
             updateTextBoxContent('all');
-
-            // Set default zoom and pitch when All Lines button is clicked
-            map.flyTo({
-                center: [120,98155, 14.5891],
-                zoom: 11.54,
-                pitch: 0,
-                essential: true
-            });
         }
     </script>
 
