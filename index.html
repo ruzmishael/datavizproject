@@ -64,7 +64,6 @@
             background-color: turquoise;
         }
 
-        /* New styles for the text box */
         .text-box {
             position: absolute;
             top: 0;
@@ -73,7 +72,7 @@
             height: 100%;
             background-color: rgba(242, 238, 222, 1);
             padding: 10px;
-            overflow-y: auto;   
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -89,7 +88,6 @@
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
 
-    <!-- New text box -->
     <div class="text-box">
         <h2>Riles MNL</h2>
         <p>Transportation in Metro Manila can be a complex and challenging issue, with various options available to commuters. Ride-hailing services are popular among those seeking comfort, while others rely on public transportation like the MRT and LRT. However, there is a lack of comprehensive and easily accessible information about the operations of these mass transit systems. This project aims to address this problem by providing a visually appealing overview of the MRT and LRT lines, including ridership data, capacity constraints, and maintenance information. By presenting this information in an interactive format, we hope to empower the public and stakeholders to make informed transportation choices and contribute to the improvement of the transportation system in Metro Manila.</p>
@@ -133,6 +131,21 @@
             map.addSource('line3', {
                 type: 'geojson',
                 data: 'line3.geojson'
+            });
+
+            map.addSource('univ_line1', {
+                type: 'geojson',
+                data: 'univ_line1.geojson'
+            });
+
+            map.addSource('univ_line2', {
+                type: 'geojson',
+                data: 'univ_line2.geojson'
+            });
+
+            map.addSource('univ_line3', {
+                type: 'geojson',
+                data: 'univ_line3.geojson'
             });
 
             map.addLayer({
@@ -189,6 +202,48 @@
                     ],
                     'circle-color': '#ab4e52',
                     'circle-opacity': 0.5,
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'univ_line1',
+                type: 'circle',
+                source: 'univ_line1',
+                paint: {
+                    'circle-radius': 8,
+                    'circle-color': 'red',
+                    'circle-opacity': 0.8,
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'univ_line2',
+                type: 'circle',
+                source: 'univ_line2',
+                paint: {
+                    'circle-radius': 8,
+                    'circle-color': 'orange',
+                    'circle-opacity': 0.8,
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+            map.addLayer({
+                id: 'univ_line3',
+                type: 'circle',
+                source: 'univ_line3',
+                paint: {
+                    'circle-radius': 8,
+                    'circle-color': 'yellow',
+                    'circle-opacity': 0.8,
                 },
                 layout: {
                     'visibility': 'none'
