@@ -352,37 +352,38 @@
         
         function toggleLine(lineId) {
             let zoomLevel, centerCoordinates, pitch, buttonColor, univLayerId;
-
+        
             switch (lineId) {
-            case 'line1':
-                zoomLevel = 12.15;
-                centerCoordinates = [120.96509, 14.57425];
-                pitch = 40;
-                buttonColor = 'green';
-                univLayerId = 'univ_line1';
-                break;
-            case 'line2':
-                zoomLevel = 12.21;
-                centerCoordinates = [121.01896, 14.60391];
-                pitch = 40;
-                buttonColor = 'purple';
-                univLayerId = 'univ_line2';
-                break;
-            case 'line3':
-                zoomLevel = 12.12;
-                centerCoordinates = [120.99579, 14.57678];
-                pitch = 40;
-                buttonColor = 'blue';
-                univLayerId = 'univ_line3';
-                break;
-            default:
+                case 'line1':
+                    zoomLevel = 12.15;
+                    centerCoordinates = [120.96509, 14.57425];
+                    pitch = 40;
+                    buttonColor = 'green';
+                    univLayerId = 'univ_line1';
+                    break;
+                case 'line2':
+                    zoomLevel = 12.21;
+                    centerCoordinates = [121.01896, 14.60391];
+                    pitch = 40;
+                    buttonColor = 'purple';
+                    univLayerId = 'univ_line2';
+                    break;
+                case 'line3':
+                    zoomLevel = 12.12;
+                    centerCoordinates = [120.99579, 14.57678];
+                    pitch = 40;
+                    buttonColor = 'blue';
+                    univLayerId = 'univ_line3';
+                    break;
+                default:
                     zoomLevel = 10.45;
                     centerCoordinates = [120.95607, 14.58194];
                     pitch = 0;
                     buttonColor = '';
+                    univLayerId = ''; // Set univLayerId to an empty string for the 'All Lines' case
             }
 
-        map.flyTo({
+           map.flyTo({
             center: centerCoordinates,
             zoom: zoomLevel,
             pitch: pitch,
@@ -392,7 +393,9 @@
         map.setLayoutProperty('line1', 'visibility', 'none');
         map.setLayoutProperty('line2', 'visibility', 'none');
         map.setLayoutProperty('line3', 'visibility', 'none');
-        map.setLayoutProperty(univLayerId, 'visibility', 'visible');
+        if (univLayerId !== '') {
+            map.setLayoutProperty(univLayerId, 'visibility', 'visible');
+        }
     
         document.querySelectorAll('.btn-line').forEach(function (btn) {
             btn.classList.remove('active');
