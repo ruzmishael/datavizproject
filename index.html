@@ -311,6 +311,18 @@
             map.on('mouseleave', 'line3', function () {
                 map.getCanvas().style.cursor = '';
             });
+            map.on('mouseenter', 'univ_line1', function (e) {
+                var universityName = e.features[0].properties.university_name;
+                var additionalInfo = e.features[0].properties.additional_info; // Adjust this line based on your actual property name
+        
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .addTo(map);
+            });
+        
+            map.on('mouseleave', 'univ_line1', function () {
+                popup.remove();
+            });
         });
 
         function updateTextBoxContent(lineId) {
