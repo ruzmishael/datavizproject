@@ -1,0 +1,6 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "line": "LRT-2", "university": "University of the East", "latitude": 14.60214, "longitude": 120.98967 }, "geometry": { "type": "Point", "coordinates": [ 120.98967, 14.60214 ] } }
+]
+}

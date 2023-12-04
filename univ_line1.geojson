@@ -1,0 +1,6 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "line": "LRT-1", "university": "De La Salle University - Manila", "latitude": 14.56494, "longitude": 120.9931 }, "geometry": { "type": "Point", "coordinates": [ 120.9931, 14.56494 ] } }
+]
+}

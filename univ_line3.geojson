@@ -1,0 +1,6 @@
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": { "line": "MRT-3", "university": "University of Asia & the Pacific", "latitude": 14.58019, "longitude": 121.06091 }, "geometry": { "type": "Point", "coordinates": [ 121.06091, 14.58019 ] } }
+]
+}
