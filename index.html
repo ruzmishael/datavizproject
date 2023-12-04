@@ -148,6 +148,11 @@
                 data: 'univ_line3.geojson'
             });
 
+            map.loadImage('5779405.png', function (error, image) {
+                if (error) throw error;
+                map.addImage('univ_line1-icon', image);
+            });
+
             map.addLayer({
                 id: 'line1',
                 type: 'circle',
@@ -210,14 +215,11 @@
 
             map.addLayer({
                 id: 'univ_line1',
-                type: 'circle',
+                type: 'symbol', // Use the symbol layer type
                 source: 'univ_line1',
-                paint: {
-                    'circle-radius': 20,
-                    'circle-color': 'red',
-                    'circle-opacity': 0.8,
-                },
                 layout: {
+                    'icon-image': 'univ_line1-icon', // Use the icon image you added
+                    'icon-size': 0.5, // Adjust the icon size if needed
                     'visibility': 'none'
                 }
             });
