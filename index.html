@@ -219,33 +219,30 @@
                 source: 'univ_line1',
                 layout: {
                     'icon-image': 'univ_line1-icon', // Use the icon image you added
-                    'icon-size': 0.05, // Adjust the icon size if needed
+                    'icon-size': 0.1, // Adjust the icon size if needed
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
                 id: 'univ_line2',
-                type: 'circle',
+                type: 'symbol', // Use the symbol layer type
                 source: 'univ_line2',
-                paint: {
-                    'circle-radius': 8,
-                    'circle-color': 'orange',
-                    'circle-opacity': 0.8,
-                },
                 layout: {
+                    'icon-image': 'univ_line1-icon', // Use the icon image you added
+                    'icon-size': 0.1, // Adjust the icon size if needed
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
-                id: 'univ_line3',
-                type: 'circle',
+               id: 'univ_line3',
+                type: 'symbol', // Use the symbol layer type
                 source: 'univ_line3',
-                paint: {
-                    'circle-radius': 8,
-                    'circle-color': 'yellow',
-                    'circle-opacity': 0.8,
+                layout: {
+                    'icon-image': 'univ_line1-icon', // Use the icon image you added
+                    'icon-size': 0.1, // Adjust the icon size if needed
+                    'visibility': 'none'
                 },
                 layout: {
                     'visibility': 'none'
