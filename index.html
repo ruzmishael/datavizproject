@@ -309,8 +309,8 @@
                 map.getCanvas().style.cursor = '';
             });
             map.on('mouseenter', 'univ_line1', function (e) {
-                var universityName = e.features[0].properties.university_name;
-                var additionalInfo = e.features[0].properties.additional_info; // Adjust this line based on your actual property name
+                var universityName = e.features[0].properties.university;
+                var additionalInfo = e.features[0].address; // Adjust this line based on your actual property name
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
