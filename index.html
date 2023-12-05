@@ -167,30 +167,11 @@
                 data: 'univ_line3.geojson'
             });
 
-            map.loadImage('icon-univ.png', function (error, image) {
+            map.loadImage('5779405.png', function (error, image) {
                 if (error) throw error;
                 map.addImage('univ_line-icon', image);
             });
 
-            map.loadImage('icon-hospi.png', function (error, image) {
-                if (error) throw error;
-                map.addImage('hospi_line-icon', image);
-            });
-        
-            map.addSource('hospi_line1', {
-                type: 'geojson',
-                data: 'hospi_line1.geojson'
-            });
-        
-            map.addSource('hospi_line2', {
-                type: 'geojson',
-                data: 'hospi_line2.geojson'
-            });
-        
-            map.addSource('hospi_line3', {
-                type: 'geojson',
-                data: 'hospi_line3.geojson'
-            });
             map.addLayer({
                 id: 'line1',
                 type: 'circle',
@@ -257,7 +238,7 @@
                 source: 'univ_line1',
                 layout: {
                     'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-size': 0.07, // Adjust the icon size if needed
                     'visibility': 'none'
                 }
             });
@@ -268,7 +249,7 @@
                 source: 'univ_line2',
                 layout: {
                     'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-size': 0.07, // Adjust the icon size if needed
                     'visibility': 'none'
                 }
             });
@@ -279,40 +260,7 @@
                 source: 'univ_line3',
                 layout: {
                     'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
-                    'visibility': 'none'
-                },
-            });
-
-            map.addLayer({
-                id: 'hospi_line1',
-                type: 'symbol', // Use the symbol layer type
-                source: 'hospi_line1',
-                layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
-                    'visibility': 'none'
-                }
-            });
-
-            map.addLayer({
-                id: 'hospi_line2',
-                type: 'symbol', // Use the symbol layer type
-                source: 'hospi_line2',
-                layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
-                    'visibility': 'none'
-                }
-            });
-
-            map.addLayer({
-               id: 'hospi_line3',
-                type: 'symbol', // Use the symbol layer type
-                source: 'hospi_line3',
-                layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-size': 0.07, // Adjust the icon size if needed
                     'visibility': 'none'
                 },
             });
@@ -393,7 +341,7 @@
                     .addTo(map);
             });
     
-            map.on('mouseleave', 'univ_line1', function () {
+            map.on('mouseleave', 'univ_line2', function () {
                 popup.remove();
                 });
             map.on('mouseenter', 'univ_line2', function (e) {
@@ -404,8 +352,8 @@
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
                     .addTo(map);
             });
-    
-            map.on('mouseleave', 'univ_line2', function () {
+        
+            map.on('mouseleave', 'univ_line3', function () {
                 popup.remove();
                 });
             map.on('mouseenter', 'univ_line3', function (e) {
@@ -416,46 +364,11 @@
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
                     .addTo(map);
             });
-    
-            map.on('mouseleave', 'univ_line3', function () {
-                popup.remove();
-                });
-            map.on('mouseenter', 'hospi_line1', function (e) {
-                var universityName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
         
-                popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
-                    .addTo(map);
-            });
-    
-            map.on('mouseleave', 'hospi_line1', function () {
+            map.on('mouseleave', 'univ_line1', function () {
                 popup.remove();
-                });
-            map.on('mouseenter', 'hospi_line2', function (e) {
-                var universityName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
-        
-                popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
-                    .addTo(map);
             });
-    
-            map.on('mouseleave', 'hospi_line2', function () {
-                popup.remove();
-                });
-            map.on('mouseenter', 'hospi_line3', function (e) {
-                var universityName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
-        
-                popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
-                    .addTo(map);
-            });
-    
-            map.on('mouseleave', 'hospi_line3', function () {
-                popup.remove();
-                });
+        });
 
         function updateTextBoxContent(lineId) {
             let content = '';
@@ -490,7 +403,7 @@
         }
         
         function toggleLine(lineId) {
-            let zoomLevel, centerCoordinates, pitch, buttonColor, lineLayerId, univLineLayerId, hospiLineLayerId;
+            let zoomLevel, centerCoordinates, pitch, buttonColor, lineLayerId, univLineLayerId;
         
             switch (lineId) {
                 case 'line1':
@@ -500,7 +413,6 @@
                     buttonColor = 'green';
                     lineLayerId = 'line1';
                     univLineLayerId = 'univ_line1';
-                    hospiLineLayerId = 'hospi_line1';
                     break;
                 case 'line2':
                     zoomLevel = 12.21;
@@ -509,7 +421,6 @@
                     buttonColor = 'purple';
                     lineLayerId = 'line2';
                     univLineLayerId = 'univ_line2';
-                    hospiLineLayerId = 'hospi_line2';
                     break;
                 case 'line3':
                     zoomLevel = 12.12;
@@ -518,7 +429,6 @@
                     buttonColor = 'blue';
                     lineLayerId = 'line3';
                     univLineLayerId = 'univ_line3';
-                    hospiLineLayerId = 'hospi_line3';
                     break;
                 default:
                     zoomLevel = 10.45;
@@ -540,14 +450,10 @@
             map.setLayoutProperty('univ_line1', 'visibility', 'none');
             map.setLayoutProperty('univ_line2', 'visibility', 'none');
             map.setLayoutProperty('univ_line3', 'visibility', 'none');
-            map.setLayoutProperty('hospi_line1', 'visibility', 'none');
-            map.setLayoutProperty('hospi_line2', 'visibility', 'none');
-            map.setLayoutProperty('hospi_line3', 'visibility', 'none');
         
             map.setLayoutProperty(lineLayerId, 'visibility', 'visible');
             map.setLayoutProperty(univLineLayerId, 'visibility', 'visible');
-            map.setLayoutProperty(hospiLineLayerId, 'visibility', 'visible');
-
+        
             document.querySelectorAll('.btn-line').forEach(function (btn) {
                 btn.classList.remove('active');
                 btn.style.backgroundColor = '#ccc';
@@ -563,36 +469,66 @@
             var defaultZoom = 11.54;
             var defaultCenter = [120.98155, 14.5891];
             var defaultPitch = 0;
-        
+
             map.flyTo({
-                center: defaultCenter,
-                zoom: defaultZoom,
-                pitch: defaultPitch,
-                essential: true
-                });
-            
-                // Show all line layers and their associated university layers
-                map.setLayoutProperty('line1', 'visibility', 'visible');
-                map.setLayoutProperty('line2', 'visibility', 'visible');
-                map.setLayoutProperty('line3', 'visibility', 'visible');
-                map.setLayoutProperty('univ_line1', 'visibility', 'visible');
-                map.setLayoutProperty('univ_line2', 'visibility', 'visible');
-                map.setLayoutProperty('univ_line3', 'visibility', 'visible');
-                map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
-                map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
-                map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
-            
-                document.querySelectorAll('.btn-line').forEach(function (btn) {
-                    btn.classList.remove('active');
-                    btn.style.backgroundColor = '#ccc';
-                });
-            
-                var allLinesButton = document.querySelector('.btn-line-all');
-                allLinesButton.classList.add('active');
-                allLinesButton.style.backgroundColor = 'black';
-                updateTextBoxContent('all');
-                }
+        center: centerCoordinates,
+        zoom: zoomLevel,
+        pitch: pitch,
+        essential: true
+    });
+
+    map.setLayoutProperty('line1', 'visibility', 'none');
+    map.setLayoutProperty('line2', 'visibility', 'none');
+    map.setLayoutProperty('line3', 'visibility', 'none');
+    map.setLayoutProperty('univ_line1', 'visibility', 'none');
+    map.setLayoutProperty('univ_line2', 'visibility', 'none');
+    map.setLayoutProperty('univ_line3', 'visibility', 'none');
+
+    map.setLayoutProperty(lineLayerId, 'visibility', 'visible');
+
+    document.querySelectorAll('.btn-line').forEach(function (btn) {
+        btn.classList.remove('active');
+        btn.style.backgroundColor = '#ccc';
+    });
+
+    var activeButton = document.querySelector('.btn-line-' + lineId);
+    activeButton.classList.add('active');
+    activeButton.style.backgroundColor = buttonColor;
+    updateTextBoxContent(lineId);
+}
+
+function toggleAllLines() {
+    var defaultZoom = 11.54;
+    var defaultCenter = [120.98155, 14.5891];
+    var defaultPitch = 0;
+
+    map.flyTo({
+        center: defaultCenter,
+        zoom: defaultZoom,
+        pitch: defaultPitch,
+        essential: true
+    });
+
+    // Show all line layers and their associated university layers
+    map.setLayoutProperty('line1', 'visibility', 'visible');
+    map.setLayoutProperty('line2', 'visibility', 'visible');
+    map.setLayoutProperty('line3', 'visibility', 'visible');
+    map.setLayoutProperty('univ_line1', 'visibility', 'visible');
+    map.setLayoutProperty('univ_line2', 'visibility', 'visible');
+    map.setLayoutProperty('univ_line3', 'visibility', 'visible');
+
+    document.querySelectorAll('.btn-line').forEach(function (btn) {
+        btn.classList.remove('active');
+        btn.style.backgroundColor = '#ccc';
+    });
+
+    var allLinesButton = document.querySelector('.btn-line-all');
+    allLinesButton.classList.add('active');
+    allLinesButton.style.backgroundColor = 'black';
+    updateTextBoxContent('all');
+}
     </script>
+
 </body>
 
 </html>
