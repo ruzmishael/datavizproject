@@ -438,7 +438,7 @@
                 var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
         
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + hospitalyName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
                     .addTo(map);
             });
         
@@ -608,7 +608,6 @@ function toggleAllLines() {
         essential: true
     });
 
-    // Show all line layers and their associated university layers
     map.setLayoutProperty('line1', 'visibility', 'visible');
     map.setLayoutProperty('line2', 'visibility', 'visible');
     map.setLayoutProperty('line3', 'visibility', 'visible');
