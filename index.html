@@ -559,41 +559,6 @@
             updateTextBoxContent(lineId);
         }
 
-        function toggleAllLines() {
-            var defaultZoom = 11.54;
-            var defaultCenter = [120.98155, 14.5891];
-            var defaultPitch = 0;
-
-            map.flyTo({
-        center: centerCoordinates,
-        zoom: zoomLevel,
-        pitch: pitch,
-        essential: true
-    });
-
-    map.setLayoutProperty('line1', 'visibility', 'none');
-    map.setLayoutProperty('line2', 'visibility', 'none');
-    map.setLayoutProperty('line3', 'visibility', 'none');
-    map.setLayoutProperty('univ_line1', 'visibility', 'none');
-    map.setLayoutProperty('univ_line2', 'visibility', 'none');
-    map.setLayoutProperty('univ_line3', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line1', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line2', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line3', 'visibility', 'none');
-
-    map.setLayoutProperty(lineLayerId, 'visibility', 'visible');
-
-    document.querySelectorAll('.btn-line').forEach(function (btn) {
-        btn.classList.remove('active');
-        btn.style.backgroundColor = '#ccc';
-    });
-
-    var activeButton = document.querySelector('.btn-line-' + lineId);
-    activeButton.classList.add('active');
-    activeButton.style.backgroundColor = buttonColor;
-    updateTextBoxContent(lineId);
-}
-
 function toggleAllLines() {
     var defaultZoom = 11.54;
     var defaultCenter = [120.98155, 14.5891];
