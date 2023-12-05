@@ -319,11 +319,11 @@
 
 
             map.on('mouseenter', 'line1', function (e) {
-                var StationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.station_name;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + StationName + '</h5>' +
+                    '<h5>' + stationName + '</h5>' +
                     '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
                     '</div>';
             
@@ -337,11 +337,11 @@
             });
 
             map.on('mouseenter', 'line2', function (e) {
-                var StationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.station_name;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + StationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
+                    .setHTML('<h5>' + stationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
                     .addTo(map);
             });
 
@@ -350,11 +350,11 @@
             });
 
             map.on('mouseenter', 'line3', function (e) {
-                var StationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.station_name;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + StationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
+                    .setHTML('<h5>' + stationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
                     .addTo(map);
             });
 
