@@ -344,17 +344,16 @@
             map.on('mouseenter', 'univ_line1', function (e) {
                 var universityName = e.features[0].properties.university;
                 var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
-
+        
                 var popupContent = '<div class="custom-popup">' +
                     '<h5>' + universityName + '</h5>' +
-                    '<p>Daily City: ' + address + '</p>' +
+                    '<p> City: ' + address + '</p>' +
                     '</div>';
             
                 popup.setLngLat(e.lngLat)
                     .setHTML(popupContent)
-                    .addTo(map);
+                    .addTo(map); 
             });
-        
             map.on('mouseleave', 'univ_line1', function () {
                 popup.remove();
             });
