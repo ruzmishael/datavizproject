@@ -174,26 +174,25 @@
 
             });
 
-            map.addSource('hospi_line1', {
-                type: 'geojson',
-                data: 'hospi_line1.geojson'
-            });
-
-            map.addSource('hospi_line2', {
-                type: 'geojson',
-                data: 'hospi_line2.geojson'
-            });
-
-            map.addSource('hospi_line3', {
-                type: 'geojson',
-                data: 'hospi_line3.geojson'
-            });
-
             map.loadImage('icon-hospi.png', function (error, image) {
                 if (error) throw error;
                 map.addImage('hospi_line-icon', image);
             });
-
+        
+            map.addSource('hospi_line1', {
+                type: 'geojson',
+                data: 'hospi_line1.geojson'
+            });
+        
+            map.addSource('hospi_line2', {
+                type: 'geojson',
+                data: 'hospi_line2.geojson'
+            });
+        
+            map.addSource('hospi_line3', {
+                type: 'geojson',
+                data: 'hospi_line3.geojson'
+            });
             map.addLayer({
                 id: 'line1',
                 type: 'circle',
