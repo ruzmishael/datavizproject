@@ -422,7 +422,6 @@
             map.on('mouseleave', 'univ_line3', function () {
                 popup.remove();
                 });
-            });
             map.on('mouseenter', 'hospi_line1', function (e) {
                 var universityName = e.features[0].properties.hospital;
                 var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
