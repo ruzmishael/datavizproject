@@ -604,29 +604,29 @@ function toggleAllLines() {
         zoom: defaultZoom,
         pitch: defaultPitch,
         essential: true
-    });
-
-    // Show all line layers and their associated university layers
-    map.setLayoutProperty('line1', 'visibility', 'visible');
-    map.setLayoutProperty('line2', 'visibility', 'visible');
-    map.setLayoutProperty('line3', 'visibility', 'visible');
-    map.setLayoutProperty('univ_line1', 'visibility', 'visible');
-    map.setLayoutProperty('univ_line2', 'visibility', 'visible');
-    map.setLayoutProperty('univ_line3', 'visibility', 'visible');
-    map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
-    map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
-    map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
-
-    document.querySelectorAll('.btn-line').forEach(function (btn) {
-        btn.classList.remove('active');
-        btn.style.backgroundColor = '#ccc';
-    });
-
-    var allLinesButton = document.querySelector('.btn-line-all');
-    allLinesButton.classList.add('active');
-    allLinesButton.style.backgroundColor = 'black';
-    updateTextBoxContent('all');
-    }
+        });
+    
+        // Show all line layers and their associated university layers
+        map.setLayoutProperty('line1', 'visibility', 'visible');
+        map.setLayoutProperty('line2', 'visibility', 'visible');
+        map.setLayoutProperty('line3', 'visibility', 'visible');
+        map.setLayoutProperty('univ_line1', 'visibility', 'visible');
+        map.setLayoutProperty('univ_line2', 'visibility', 'visible');
+        map.setLayoutProperty('univ_line3', 'visibility', 'visible');
+        map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
+        map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
+        map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
+    
+        document.querySelectorAll('.btn-line').forEach(function (btn) {
+            btn.classList.remove('active');
+            btn.style.backgroundColor = '#ccc';
+        });
+    
+        var allLinesButton = document.querySelector('.btn-line-all');
+        allLinesButton.classList.add('active');
+        allLinesButton.style.backgroundColor = 'black';
+        updateTextBoxContent('all');
+        }
     </script>
 
 </body>
