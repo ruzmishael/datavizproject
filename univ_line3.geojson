@@ -8,10 +8,7 @@
 { "type": "Feature", "properties": { "line": "MRT-3", "university": "Enderun Colleges", "latitude": 14.5325601, "longitude": 121.0528236, "address": "Taguig" }, "geometry": { "type": "Point", "coordinates": [ 121.0528236, 14.5325601 ] } },
 { "type": "Feature", "properties": { "line": "MRT-3", "university": "Manuel L. Quezon University", "latitude": 14.6356427, "longitude": 121.0437983, "address": "Quezon City" }, "geometry": { "type": "Point", "coordinates": [ 121.0437983, 14.6356427 ] } },
 { "type": "Feature", "properties": { "line": "MRT-3", "university": "Mapúa University - Makati", "latitude": 14.5664614, "longitude": 121.0150212, "address": "Makati" }, "geometry": { "type": "Point", "coordinates": [ 121.0150212, 14.5664614 ] } },
-{ "type": "Feature", "properties": { "line": "MRT-3", "university": "NU - MOA", "latitude": 14.5308113, "longitude": 120.9808798, "address": "Pasay" }, "geometry": { "type": "Point", "coordinates": [ 120.9808798, 14.5308113 ] } },
-{ "type": "Feature", "properties": { "line": "MRT-3", "university": "St. Paul University Quezon City", "latitude": 14.6145399, "longitude": 121.0351226, "address": "Quezon City" }, "geometry": { "type": "Point", "coordinates": [ 121.0351226, 14.6145399 ] } },
 { "type": "Feature", "properties": { "line": "MRT-3", "university": "Saint Pedro Poveda College", "latitude": 14.5901039, "longitude": 121.058413, "address": "Quezon City" }, "geometry": { "type": "Point", "coordinates": [ 121.058413, 14.5901039 ] } },
-{ "type": "Feature", "properties": { "line": "MRT-3", "university": "Technological Institute of the Philippines - Quezon City", "latitude": 14.6018, "longitude": 120.9915, "address": "Quezon City" }, "geometry": { "type": "Point", "coordinates": [ 120.9915, 14.6018 ] } },
 { "type": "Feature", "properties": { "line": "MRT-3", "university": "University of Asia and the Pacific", "latitude": 14.5803, "longitude": 121.0608, "address": "Pasig" }, "geometry": { "type": "Point", "coordinates": [ 121.0608, 14.5803 ] } }
 ]
 }
