@@ -354,10 +354,6 @@
                     .setHTML(popupContent)
                     .addTo(map);
             });
-                popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
-                    .addTo(map);
-            });
         
             map.on('mouseleave', 'univ_line1', function () {
                 popup.remove();
