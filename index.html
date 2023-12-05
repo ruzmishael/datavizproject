@@ -319,7 +319,7 @@
 
 
             map.on('mouseenter', 'line1', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.StationName;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 var popupContent = '<div class="custom-popup">' +
@@ -337,7 +337,7 @@
             });
 
             map.on('mouseenter', 'line2', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.StationName;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
@@ -350,7 +350,7 @@
             });
 
             map.on('mouseenter', 'line3', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var stationName = e.features[0].properties.StationName;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
