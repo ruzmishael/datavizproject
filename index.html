@@ -282,13 +282,12 @@
                 popup.remove();
             });
 
-            var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + stationName + '</h5>' +
-                    '<p>Daily Ridership: ' + dailyRidership + '</p>' +
-                    '</div>';
-            
+            map.on('mouseenter', 'line2', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
                 popup.setLngLat(e.lngLat)
-                    .setHTML(popupContent)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
 
@@ -296,13 +295,12 @@
                 popup.remove();
             });
 
-            var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + stationName + '</h5>' +
-                    '<p>Daily Ridership: ' + dailyRidership + '</p>' +
-                    '</div>';
-            
+            map.on('mouseenter', 'line3', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
                 popup.setLngLat(e.lngLat)
-                    .setHTML(popupContent)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
 
