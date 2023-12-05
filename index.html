@@ -265,60 +265,50 @@
                 },
             });
 
-            map.on('mouseenter', 'univ_line1', function (e) {
-                var universityName = e.features[0].properties.university;
-                var address = e.features[0].properties.address; // Adjust this line based on your actual property name
-            
+            map.on('mouseenter', 'line1', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
                 var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + universityName + '</h5>' +
-                    '<p>' + address + '</p>' +
+                    '<h5>' + stationName + '</h5>' +
+                    '<p>Daily Ridership: ' + dailyRidership + '</p>' +
                     '</div>';
             
                 popup.setLngLat(e.lngLat)
                     .setHTML(popupContent)
                     .addTo(map);
             });
-            
-            map.on('mouseleave', 'univ_line1', function () {
+
+            map.on('mouseleave', 'line1', function () {
                 popup.remove();
             });
 
-            map.on('mouseenter', 'univ_line2', function (e) {
-                var universityName = e.features[0].properties.university;
-                var address = e.features[0].properties.address; // Adjust this line based on your actual property name
-            
-                var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + universityName + '</h5>' +
-                    '<p>' + address + '</p>' +
-                    '</div>';
-            
+            map.on('mouseenter', 'line2', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
                 popup.setLngLat(e.lngLat)
-                    .setHTML(popupContent)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
-            
-            map.on('mouseleave', 'univ_line2', function () {
+
+            map.on('mouseleave', 'line2', function () {
                 popup.remove();
             });
 
-           map.on('mouseenter', 'univ_line3', function (e) {
-                var universityName = e.features[0].properties.university;
-                var address = e.features[0].properties.address; // Adjust this line based on your actual property name
-            
-                var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + universityName + '</h5>' +
-                    '<p>' + address + '</p>' +
-                    '</div>';
-            
+            map.on('mouseenter', 'line3', function (e) {
+                var stationName = e.features[0].properties.station_name;
+                var dailyRidership = e.features[0].properties.daily_ridership;
+
                 popup.setLngLat(e.lngLat)
-                    .setHTML(popupContent)
+                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
-            
-            map.on('mouseleave', 'univ_line3', function () {
+
+            map.on('mouseleave', 'line3', function () {
                 popup.remove();
             });
-            
+
             map.on('mouseenter', 'line1', function () {
                 map.getCanvas().style.cursor = 'pointer';
             });
@@ -341,6 +331,18 @@
 
             map.on('mouseleave', 'line3', function () {
                 map.getCanvas().style.cursor = '';
+            });
+            map.on('mouseenter', 'univ_line1', function (e) {
+                var universityName = e.features[0].properties.university;
+                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+        
+                popup.setLngLat(e.lngLat)
+                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .addTo(map);
+            });
+        
+            map.on('mouseleave', 'univ_line1', function () {
+                popup.remove();
             });
         });
 
