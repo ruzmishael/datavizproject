@@ -260,66 +260,66 @@
 
             map.addLayer({
                 id: 'univ_line1',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'univ_line1',
                 layout: {
-                    'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'univ_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
                 id: 'univ_line2',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'univ_line2',
                 layout: {
-                    'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'univ_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
                id: 'univ_line3',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'univ_line3',
                 layout: {
-                    'icon-image': 'univ_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'univ_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 },
             });
 
             map.addLayer({
                 id: 'hospi_line1',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'hospi_line1',
                 layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'hospi_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
                 id: 'hospi_line2',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'hospi_line2',
                 layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'hospi_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 }
             });
 
             map.addLayer({
                id: 'hospi_line3',
-                type: 'symbol', // Use the symbol layer type
+                type: 'symbol',
                 source: 'hospi_line3',
                 layout: {
-                    'icon-image': 'hospi_line-icon', // Use the icon image you added
-                    'icon-size': 0.3, // Adjust the icon size if needed
+                    'icon-image': 'hospi_line-icon',
+                    'icon-size': 0.3,
                     'visibility': 'none'
                 },
             });
@@ -394,7 +394,7 @@
             });
             map.on('mouseenter', 'univ_line1', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address;
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
@@ -406,7 +406,7 @@
                 });
             map.on('mouseenter', 'univ_line2', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address;
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
@@ -418,7 +418,7 @@
                 });
             map.on('mouseenter', 'univ_line3', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address;
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
@@ -430,7 +430,7 @@
             });
             map.on('mouseenter', 'hospi_line1', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address;
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
@@ -442,7 +442,7 @@
                 });
             map.on('mouseenter', 'hospi_line2', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address; //
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
@@ -454,7 +454,7 @@
                 });
             map.on('mouseenter', 'hospi_line3', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; // Adjust this line based on your actual property name
+                var additionalInfo = e.features[0].properties.address; //
         
                 popup.setLngLat(e.lngLat)
                     .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
