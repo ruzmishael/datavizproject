@@ -319,11 +319,11 @@
 
 
             map.on('mouseenter', 'line1', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var StationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
 
                 var popupContent = '<div class="custom-popup">' +
-                    '<h5>' + stationName + '</h5>' +
+                    '<h5>' + StationName + '</h5>' +
                     '<p>Daily Ridership: ' + dailyRidership + '</p>' +
                     '</div>';
             
@@ -337,11 +337,11 @@
             });
 
             map.on('mouseenter', 'line2', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var StationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .setHTML('<h5>' + StationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
 
@@ -350,11 +350,11 @@
             });
 
             map.on('mouseenter', 'line3', function (e) {
-                var stationName = e.features[0].properties.station_name;
+                var StationName = e.features[0].properties.station_name;
                 var dailyRidership = e.features[0].properties.daily_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + stationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .setHTML('<h5>' + StationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
                     .addTo(map);
             });
 
