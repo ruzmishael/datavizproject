@@ -199,7 +199,7 @@
                     'circle-radius': [
                         'interpolate',
                         ['linear'],
-                        ['get', 'daily_ridership'],
+                        ['get', 'monthly_ridership'],
                         0, 5,
                         100000, 20,
                     ],
@@ -219,7 +219,7 @@
                     'circle-radius': [
                         'interpolate',
                         ['linear'],
-                        ['get', 'daily_ridership'],
+                        ['get', 'monthly_ridership'],
                         0, 5,
                         100000, 20,
                     ],
@@ -239,7 +239,7 @@
                     'circle-radius': [
                         'interpolate',
                         ['linear'],
-                        ['get', 'daily_ridership'],
+                        ['get', 'monthly_ridership'],
                         0, 5,
                         100000, 20,
                     ],
@@ -320,11 +320,11 @@
 
             map.on('mouseenter', 'line1', function (e) {
                 var StationName = e.features[0].properties.station_name;
-                var dailyRidership = e.features[0].properties.daily_ridership;
+                var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 var popupContent = '<div class="custom-popup">' +
                     '<h5>' + StationName + '</h5>' +
-                    '<p>Daily Ridership: ' + dailyRidership + '</p>' +
+                    '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
                     '</div>';
             
                 popup.setLngLat(e.lngLat)
@@ -338,10 +338,10 @@
 
             map.on('mouseenter', 'line2', function (e) {
                 var StationName = e.features[0].properties.station_name;
-                var dailyRidership = e.features[0].properties.daily_ridership;
+                var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + StationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .setHTML('<h5>' + StationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
                     .addTo(map);
             });
 
@@ -351,10 +351,10 @@
 
             map.on('mouseenter', 'line3', function (e) {
                 var StationName = e.features[0].properties.station_name;
-                var dailyRidership = e.features[0].properties.daily_ridership;
+                var monthlyRidership = e.features[0].properties.monthly_ridership;
 
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + StationName + '</h5><p>Daily Ridership: ' + dailyRidership + '</p>')
+                    .setHTML('<h5>' + StationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
                     .addTo(map);
             });
 
