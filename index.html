@@ -619,9 +619,9 @@ function toggleAllLines() {
     map.setLayoutProperty('univ_line1', 'visibility', 'visible');
     map.setLayoutProperty('univ_line2', 'visibility', 'visible');
     map.setLayoutProperty('univ_line3', 'visibility', 'visible');
-    map.setLayoutProperty('hospi_line1', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line2', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line3', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
+    map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
+    map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
 
     document.querySelectorAll('.btn-line').forEach(function (btn) {
         btn.classList.remove('active');
