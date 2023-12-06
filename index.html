@@ -404,24 +404,31 @@
             map.on('mouseleave', 'univ_line2', function () {
                 popup.remove();
                 });
-            map.on('mouseenter', 'univ_line2', function (e) {
-                var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address;
-        
+            map.on('mouseenter', 'line2', function (e) {
+                var stationName = e.features[0].properties.StationName;
+                var monthlyRidership = e.features[0].properties.monthly_ridership;
+            
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + stationName + '</h5>' +
+                    '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
-            map.on('mouseleave', 'univ_line3', function () {
-                popup.remove();
-                });
-            map.on('mouseenter', 'univ_line3', function (e) {
-                var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address;
-        
+            map.on('mouseenter', 'line3', function (e) {
+                var stationName = e.features[0].properties.StationName;
+                var monthlyRidership = e.features[0].properties.monthly_ridership;
+            
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + stationName + '</h5>' +
+                    '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
