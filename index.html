@@ -113,11 +113,11 @@
     </div>
     
     <div class="filter-buttons btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-            <input type="radio" name="filter" id="universities" autocomplete="off" checked onchange="toggleFilter('universities')"> Universities
+        <label class="btn btn-secondary active" data-filter="universities">
+            <input type="radio" name="filter" id="universities" autocomplete="off" checked onchange="toggleFilter('universities', getActiveLine())"> Universities
         </label>
-        <label class="btn btn-secondary">
-            <input type="radio" name="filter" id="hospitals" autocomplete="off" onchange="toggleFilter('hospitals')"> Hospitals
+        <label class="btn btn-secondary" data-filter="hospitals">
+            <input type="radio" name="filter" id="hospitals" autocomplete="off" onchange="toggleFilter('hospitals', getActiveLine())"> Hospitals
         </label>
     </div>
     
@@ -673,19 +673,33 @@ function toggleAllLines() {
     updateTextBoxContent('all');
 }
 
+function getActiveLine() {
+    var activeLine = document.querySelector('.btn-line.active');
+    return activeLine ? activeLine.getAttribute('data-line') : null;
+}
+
+// Modified the toggleFilter function
 function toggleFilter(filterType, activeLine) {
     // Hide all layers except the selected line
     map.setLayoutProperty('line1', 'visibility', activeLine === 'line1' ? 'visible' : 'none');
     map.setLayoutProperty('line2', 'visibility', activeLine === 'line2' ? 'visible' : 'none');
     map.setLayoutProperty('line3', 'visibility', activeLine === 'line3' ? 'visible' : 'none');
+    map.setLayoutProperty('univ_line1', 'visibility', 'none');
+    map.setLayoutProperty('univ_line2', 'visibility', 'none');
+    map.setLayoutProperty('univ_line3', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line1', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line2', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line3', 'visibility', 'none');
 
-    map.setLayoutProperty('univ_line1', 'visibility', activeLine === 'line1' && filterType === 'universities' ? 'visible' : 'none');
-    map.setLayoutProperty('univ_line2', 'visibility', activeLine === 'line2' && filterType === 'universities' ? 'visible' : 'none');
-    map.setLayoutProperty('univ_line3', 'visibility', activeLine === 'line3' && filterType === 'universities' ? 'visible' : 'none');
-
-    map.setLayoutProperty('hospi_line1', 'visibility', activeLine === 'line1' && filterType === 'hospitals' ? 'visible' : 'none');
-    map.setLayoutProperty('hospi_line2', 'visibility', activeLine === 'line2' && filterType === 'hospitals' ? 'visible' : 'none');
-    map.setLayoutProperty('hospi_line3', 'visibility', activeLine === 'line3' && filterType === 'hospitals' ? 'visible' : 'none');
+    // Show the selected filter type for the active line
+    switch (filterType) {
+        case 'universities':
+            map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
+            break;
+        case 'hospitals':
+            map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
+            break;
+    }
 }
     </script>
 
