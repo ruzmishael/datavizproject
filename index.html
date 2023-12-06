@@ -464,13 +464,17 @@
             map.on('mouseenter', 'hospi_line1', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
                 var address = e.features[0].properties.address;
-                var designation = e.features[0].properties.designation;
+                var pubpriv = e.features[0].properties.designation;
 
                 var popupContent = '<div class="custom-popup">' +
                     '<h5>' + hospitalName + '</h5>' +
                     '<p>City: ' + address + '</p>' +
-                    '<p>Designation: ' + designation + '</p>' +
+                    '<p>Designation: ' + pubpriv + '</p>' +
                     '</div>';
+                
+                popup.setLngLat(e.lngLat)
+                    .setHTML(popupContent)
+                    .addTo(map);
             });
     
             map.on('mouseleave', 'hospi_line1', function () {
