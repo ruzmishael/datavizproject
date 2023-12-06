@@ -687,17 +687,6 @@ function toggleFilter(filterType, activeLine) {
     map.setLayoutProperty('hospi_line2', 'visibility', activeLine === 'line2' && filterType === 'hospitals' ? 'visible' : 'none');
     map.setLayoutProperty('hospi_line3', 'visibility', activeLine === 'line3' && filterType === 'hospitals' ? 'visible' : 'none');
 }
-
-    // Show the selected filter type for the active line
-    switch (filterType) {
-        case 'universities':
-            map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
-            break;
-        case 'hospitals':
-            map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
-            break;
-    }
-}
     </script>
 
 </body>
