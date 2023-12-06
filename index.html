@@ -674,10 +674,10 @@ function toggleAllLines() {
 }
 
 function toggleFilter(filterType, activeLine) {
-    // Hide all layers
-    map.setLayoutProperty('line1', 'visibility', 'none');
-    map.setLayoutProperty('line2', 'visibility', 'none');
-    map.setLayoutProperty('line3', 'visibility', 'none');
+    // Hide all layers except the selected line
+    map.setLayoutProperty('line1', 'visibility', activeLine === 'line1' ? 'visible' : 'none');
+    map.setLayoutProperty('line2', 'visibility', activeLine === 'line2' ? 'visible' : 'none');
+    map.setLayoutProperty('line3', 'visibility', activeLine === 'line3' ? 'visible' : 'none');
     map.setLayoutProperty('univ_line1', 'visibility', 'none');
     map.setLayoutProperty('univ_line2', 'visibility', 'none');
     map.setLayoutProperty('univ_line3', 'visibility', 'none');
@@ -685,7 +685,7 @@ function toggleFilter(filterType, activeLine) {
     map.setLayoutProperty('hospi_line2', 'visibility', 'none');
     map.setLayoutProperty('hospi_line3', 'visibility', 'none');
 
-    // Show the selected line and filter type
+    // Show the selected filter type for the active line
     switch (filterType) {
         case 'universities':
             map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
@@ -694,9 +694,6 @@ function toggleFilter(filterType, activeLine) {
             map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
             break;
     }
-
-    // Show the selected line
-    map.setLayoutProperty(activeLine, 'visibility', 'visible');
 }
     </script>
 
