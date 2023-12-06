@@ -111,7 +111,16 @@
         <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
     </div>
-
+    
+    <div class="filter-buttons">
+        <label class="btn btn-secondary active">
+            <input type="radio" name="filter" id="universities" autocomplete="off" checked onchange="toggleFilter('universities')"> Universities
+        </label>
+        <label class="btn btn-secondary">
+            <input type="radio" name="filter" id="hospitals" autocomplete="off" onchange="toggleFilter('hospitals')"> Hospitals
+        </label>
+    </div>
+    
     <div class="text-box">
         <h2>Riles MNL</h2>
         <p>Navigating transportation in Metro Manila proves intricate, offering commuters a plethora of choices. Ride-hailing services attract those prioritizing comfort, while others opt for public transportation such as the MRT and LRT. However, a challenge lies in the absence of a comprehensive and easily accessible resource detailing the operations of these mass transit systems. This initiative seeks to remedy this issue by furnishing a visually engaging overview of the MRT and LRT lines, encompassing ridership data, accessibility, and other operational details. Through the presentation of this information in an interactive manner, our goal is to empower both the public and stakeholders, enabling them to make well-informed transportation decisions and actively contribute to enhancing Metro Manila&#39;s mass transportation system..</p>
@@ -662,6 +671,34 @@ function toggleAllLines() {
     allLinesButton.classList.add('active');
     allLinesButton.style.backgroundColor = 'black';
     updateTextBoxContent('all');
+
+function toggleFilter(filterType) {
+        switch (filterType) {
+            case 'universities':
+                map.setLayoutProperty('line1', 'visibility', 'none');
+                map.setLayoutProperty('line2', 'visibility', 'none');
+                map.setLayoutProperty('line3', 'visibility', 'none');
+                map.setLayoutProperty('hospi_line1', 'visibility', 'none');
+                map.setLayoutProperty('hospi_line2', 'visibility', 'none');
+                map.setLayoutProperty('hospi_line3', 'visibility', 'none');
+
+                map.setLayoutProperty('univ_line1', 'visibility', 'visible');
+                map.setLayoutProperty('univ_line2', 'visibility', 'visible');
+                map.setLayoutProperty('univ_line3', 'visibility', 'visible');
+                break;
+
+            case 'hospitals':
+                map.setLayoutProperty('line1', 'visibility', 'none');
+                map.setLayoutProperty('line2', 'visibility', 'none');
+                map.setLayoutProperty('line3', 'visibility', 'none');
+                map.setLayoutProperty('univ_line1', 'visibility', 'none');
+                map.setLayoutProperty('univ_line2', 'visibility', 'none');
+                map.setLayoutProperty('univ_line3', 'visibility', 'none');
+
+                map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
+                map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
+                map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
+                break;
 }
     </script>
 
