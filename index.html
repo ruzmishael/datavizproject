@@ -673,35 +673,27 @@ function toggleAllLines() {
     updateTextBoxContent('all');
 }
 
-function toggleFilter(filterType) {
-        switch (filterType) {
-            case 'universities':
-                map.setLayoutProperty('line1', 'visibility', 'none');
-                map.setLayoutProperty('line2', 'visibility', 'none');
-                map.setLayoutProperty('line3', 'visibility', 'none');
-                map.setLayoutProperty('hospi_line1', 'visibility', 'none');
-                map.setLayoutProperty('hospi_line2', 'visibility', 'none');
-                map.setLayoutProperty('hospi_line3', 'visibility', 'none');
+function toggleFilter(filterType, activeLine) {
+    map.setLayoutProperty('line1', 'visibility', 'none');
+    map.setLayoutProperty('line2', 'visibility', 'none');
+    map.setLayoutProperty('line3', 'visibility', 'none');
+    map.setLayoutProperty('univ_line1', 'visibility', 'none');
+    map.setLayoutProperty('univ_line2', 'visibility', 'none');
+    map.setLayoutProperty('univ_line3', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line1', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line2', 'visibility', 'none');
+    map.setLayoutProperty('hospi_line3', 'visibility', 'none');
 
-                map.setLayoutProperty('univ_line1', 'visibility', 'visible');
-                map.setLayoutProperty('univ_line2', 'visibility', 'visible');
-                map.setLayoutProperty('univ_line3', 'visibility', 'visible');
-                break;
-
-            case 'hospitals':
-                map.setLayoutProperty('line1', 'visibility', 'none');
-                map.setLayoutProperty('line2', 'visibility', 'none');
-                map.setLayoutProperty('line3', 'visibility', 'none');
-                map.setLayoutProperty('univ_line1', 'visibility', 'none');
-                map.setLayoutProperty('univ_line2', 'visibility', 'none');
-                map.setLayoutProperty('univ_line3', 'visibility', 'none');
-
-                map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
-                map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
-                map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
-                break;
-        }
+    // Show the selected filter type for the active line
+    switch (filterType) {
+        case 'universities':
+            map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
+            break;
+        case 'hospitals':
+            map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
+            break;
     }
+}
     </script>
 
 </body>
