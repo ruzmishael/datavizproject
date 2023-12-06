@@ -469,7 +469,7 @@
                 var popupContent = '<div class="custom-popup">' +
                     '<h5>' + hospitalName + '</h5>' +
                     '<p>City: ' + address + '</p>' +
-                    '<p>Designation: ' + pubpriv + '</p>' +
+                    '<p>Type: ' + pubpriv + '</p>' +
                     '</div>';
                 
                 popup.setLngLat(e.lngLat)
@@ -482,10 +482,17 @@
                 });
             map.on('mouseenter', 'hospi_line2', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; //
-        
+                var address = e.features[0].properties.address;
+                var pubpriv = e.features[0].properties.designation;
+
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + hospitalName + '</h5>' +
+                    '<p>City: ' + address + '</p>' +
+                    '<p>Type: ' + pubpriv + '</p>' +
+                    '</div>';
+                
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
@@ -494,10 +501,17 @@
                 });
             map.on('mouseenter', 'hospi_line3', function (e) {
                 var hospitalName = e.features[0].properties.hospital;
-                var additionalInfo = e.features[0].properties.address; //
-        
+                var address = e.features[0].properties.address;
+                var pubpriv = e.features[0].properties.designation;
+
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + hospitalName + '</h5>' +
+                    '<p>City: ' + address + '</p>' +
+                    '<p>Type: ' + pubpriv + '</p>' +
+                    '</div>';
+                
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + hospitalName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
