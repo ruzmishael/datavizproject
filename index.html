@@ -678,12 +678,15 @@ function toggleFilter(filterType, activeLine) {
     map.setLayoutProperty('line1', 'visibility', activeLine === 'line1' ? 'visible' : 'none');
     map.setLayoutProperty('line2', 'visibility', activeLine === 'line2' ? 'visible' : 'none');
     map.setLayoutProperty('line3', 'visibility', activeLine === 'line3' ? 'visible' : 'none');
-    map.setLayoutProperty('univ_line1', 'visibility', 'none');
-    map.setLayoutProperty('univ_line2', 'visibility', 'none');
-    map.setLayoutProperty('univ_line3', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line1', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line2', 'visibility', 'none');
-    map.setLayoutProperty('hospi_line3', 'visibility', 'none');
+
+    map.setLayoutProperty('univ_line1', 'visibility', activeLine === 'line1' && filterType === 'universities' ? 'visible' : 'none');
+    map.setLayoutProperty('univ_line2', 'visibility', activeLine === 'line2' && filterType === 'universities' ? 'visible' : 'none');
+    map.setLayoutProperty('univ_line3', 'visibility', activeLine === 'line3' && filterType === 'universities' ? 'visible' : 'none');
+
+    map.setLayoutProperty('hospi_line1', 'visibility', activeLine === 'line1' && filterType === 'hospitals' ? 'visible' : 'none');
+    map.setLayoutProperty('hospi_line2', 'visibility', activeLine === 'line2' && filterType === 'hospitals' ? 'visible' : 'none');
+    map.setLayoutProperty('hospi_line3', 'visibility', activeLine === 'line3' && filterType === 'hospitals' ? 'visible' : 'none');
+}
 
     // Show the selected filter type for the active line
     switch (filterType) {
