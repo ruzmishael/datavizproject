@@ -200,6 +200,21 @@
                 if (error) throw error;
                 map.addImage('hospi_line-icon', image);
             });
+
+            map.addSource('route_line1', {
+                type: 'geojson',
+                data: 'route_line1.geojson'
+            });
+
+            map.addSource('route_line2', {
+                type: 'geojson',
+                data: 'route_line2.geojson'
+            });
+
+            map.addSource('route_line3', {
+                type: 'geojson',
+                data: 'route_line3.geojson'
+            });
             
             map.addLayer({
                 id: 'line1',
@@ -334,7 +349,48 @@
                 },
             });
 
+            map.addLayer({
+                id: 'route_line1',
+                type: 'line',
+                source: 'route_line1',
+                paint: {
+                    'line-width': 5,
+                    'line-color': green,
+                    'line-opacity': 0.8
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
+            map.addLayer({
+                id: 'route_line2',
+                type: 'line',
+                source: 'route_line2',
+                paint: {
+                    'line-width': 5,
+                    'line-color': purple,
+                    'line-opacity': 0.8
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
+
+
+            map.addLayer({
+                id: 'route_line3',
+                type: 'line',
+                source: 'route_line3',
+                paint: {
+                    'line-width': 5,
+                    'line-color': blue,
+                    'line-opacity': 0.8
+                },
+                layout: {
+                    'visibility': 'none'
+                }
+            });
 
             map.on('mouseenter', 'line1', function (e) {
                 var stationName = e.features[0].properties.StationName;
@@ -563,7 +619,7 @@
         }
         
         function toggleLine(lineId) {
-    let zoomLevel, centerCoordinates, pitch, buttonColor, lineLayerId, univLineLayerId, hospiLineLayerId;
+    let zoomLevel, centerCoordinates, pitch, buttonColor, lineLayerId, univLineLayerId, hospiLineLayerId, routeLayerId;
 
     switch (lineId) {
         case 'line1':
@@ -574,6 +630,7 @@
             lineLayerId = 'line1';
             univLineLayerId = 'univ_line1';
             hospiLineLayerId = 'hospi_line1';
+            routeLayerId = 'route_line1';
             break;
         case 'line2':
             zoomLevel = 12.21;
@@ -583,6 +640,7 @@
             lineLayerId = 'line2';
             univLineLayerId = 'univ_line2';
             hospiLineLayerId = 'hospi_line2';
+            routeLayerId = 'route_line2';
             break;
         case 'line3':
             zoomLevel = 12.12;
@@ -592,6 +650,7 @@
             lineLayerId = 'line3';
             univLineLayerId = 'univ_line3';
             hospiLineLayerId = 'hospi_line3';
+            routeLayerId = 'routeline3';
             break;
         default:
             zoomLevel = 10.45;
@@ -620,10 +679,14 @@
     map.setLayoutProperty('hospi_line1', 'visibility', 'none');
     map.setLayoutProperty('hospi_line2', 'visibility', 'none');
     map.setLayoutProperty('hospi_line3', 'visibility', 'none');
+    map.setLayoutProperty('route_line1', 'visibility', 'none');
+    map.setLayoutProperty('route_line2', 'visibility', 'none');
+    map.setLayoutProperty('route_line3', 'visibility', 'none');
 
     map.setLayoutProperty(lineLayerId, 'visibility', 'visible');
     map.setLayoutProperty(univLineLayerId, 'visibility', 'visible');
     map.setLayoutProperty(hospiLineLayerId, 'visibility', 'visible');
+    map.setLayoutProperty(routeLayerId, 'visibility', 'visible');
 
     document.querySelectorAll('.btn-line').forEach(function (btn) {
         btn.classList.remove('active');
@@ -657,6 +720,9 @@ function toggleAllLines() {
     map.setLayoutProperty('hospi_line1', 'visibility', 'visible');
     map.setLayoutProperty('hospi_line2', 'visibility', 'visible');
     map.setLayoutProperty('hospi_line3', 'visibility', 'visible');
+    map.setLayoutProperty('route_line1', 'visibility', 'visible');
+    map.setLayoutProperty('route_line2', 'visibility', 'visible');
+    map.setLayoutProperty('route_line3', 'visibility', 'visible');
 
     document.querySelectorAll('.btn-line').forEach(function (btn) {
         btn.classList.remove('active');
