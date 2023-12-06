@@ -128,10 +128,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // Load start.html content dynamically into the #app div
-            $("#app").load("start.html");
-    });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fetch start.html content dynamically
+        fetch('start.html')
+            .then(response => response.text())
+            .then(data => {
+                // Inject the loaded content into the #app div
+                document.getElementById('app').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching start.html:', error));
+        });
     </script>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
