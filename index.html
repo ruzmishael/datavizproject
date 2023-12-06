@@ -684,6 +684,13 @@ function toggleFilter(filterType, activeLine) {
     map.setLayoutProperty('line1', 'visibility', activeLine === 'line1' ? 'visible' : 'none');
     map.setLayoutProperty('line2', 'visibility', activeLine === 'line2' ? 'visible' : 'none');
     map.setLayoutProperty('line3', 'visibility', activeLine === 'line3' ? 'visible' : 'none');
+
+    // Show station layers by default
+    map.setLayoutProperty('station_line1', 'visibility', 'visible');
+    map.setLayoutProperty('station_line2', 'visibility', 'visible');
+    map.setLayoutProperty('station_line3', 'visibility', 'visible');
+
+    // Hide all university and hospital layers
     map.setLayoutProperty('univ_line1', 'visibility', 'none');
     map.setLayoutProperty('univ_line2', 'visibility', 'none');
     map.setLayoutProperty('univ_line3', 'visibility', 'none');
