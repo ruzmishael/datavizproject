@@ -673,13 +673,7 @@ function toggleAllLines() {
     updateTextBoxContent('all');
 }
 
-function getActiveLine() {
-    var activeLine = document.querySelector('.btn-line.active');
-    return activeLine ? activeLine.getAttribute('data-line') : null;
-}
-
-// Modified the toggleFilter function
-function toggleFilter(filterType, activeLine) {
+function updateMapLayers(lineId, filterType) {
     // Define all lines
     const lines = ['line1', 'line2', 'line3'];
 
@@ -692,25 +686,19 @@ function toggleFilter(filterType, activeLine) {
     });
 
     // Show the selected line and station layer
-    map.setLayoutProperty(activeLine, 'visibility', 'visible');
-    map.setLayoutProperty('station_' + activeLine, 'visibility', 'visible');
+    map.setLayoutProperty(lineId, 'visibility', 'visible');
+    map.setLayoutProperty('station_' + lineId, 'visibility', 'visible');
 
     // Show universities and hospitals layers based on the filter type for the selected line
     switch (filterType) {
         case 'universities':
-            map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
+            map.setLayoutProperty('univ_' + lineId, 'visibility', 'visible');
             break;
         case 'hospitals':
-            map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
+            map.setLayoutProperty('hospi_' + lineId, 'visibility', 'visible');
             break;
     }
-
-    // Show station layers for all lines
-    lines.forEach(line => {
-        map.setLayoutProperty('station_' + line, 'visibility', 'visible');
-    });
 }
-
     </script>
 
 </body>
