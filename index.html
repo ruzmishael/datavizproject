@@ -429,10 +429,15 @@
                 });
             map.on('mouseenter', 'univ_line2', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address;
+                var address = e.features[0].properties.address;
         
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + universityName + '</h5>' +
+                    '<p>City: ' + address + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
@@ -441,10 +446,15 @@
                 });
             map.on('mouseenter', 'univ_line3', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address;
+                var address = e.features[0].properties.address;
         
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + universityName + '</h5>' +
+                    '<p>City: ' + address + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + universityName + '</h5><p>' + additionalInfo + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
         
