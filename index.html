@@ -39,6 +39,9 @@
             justify-content: center;
         }
 
+        .radio-label {
+            margin-bottom: 5px;
+
         .btn-line {
             margin: 0 5px;
             background-color: #ccc;
@@ -106,6 +109,26 @@
     <div id="map"></div>
 
     <div class="map-overlay">
+        <label class="radio-label">
+            <input type="radio" name="filter" value="line1" onclick="toggleLayer('line1')" checked>
+            LRT-1
+        </label>
+
+        <label class="radio-label">
+            <input type="radio" name="filter" value="line2" onclick="toggleLayer('line2')">
+            LRT-2
+        </label>
+
+        <label class="radio-label">
+            <input type="radio" name="filter" value="line3" onclick="toggleLayer('line3')">
+            MRT-3
+        </label>
+
+        <label class="radio-label">
+            <input type="radio" name="filter" value="all" onclick="toggleLayer('all')">
+            All Lines
+        </label>
+        
         <button type="button" class="btn btn-info btn-line btn-line-line1" onclick="toggleLine('line1')">LRT-1</button>
         <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
         <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
@@ -662,6 +685,19 @@ function toggleAllLines() {
     allLinesButton.classList.add('active');
     allLinesButton.style.backgroundColor = 'black';
     updateTextBoxContent('all');
+
+function toggleLayer(layerId) {
+        map.setLayoutProperty('line1', 'visibility', layerId === 'line1' ? 'visible' : 'none');
+        map.setLayoutProperty('line2', 'visibility', layerId === 'line2' ? 'visible' : 'none');
+        map.setLayoutProperty('line3', 'visibility', layerId === 'line3' ? 'visible' : 'none');
+        map.setLayoutProperty('univ_line1', 'visibility', layerId === 'line1' ? 'visible' : 'none');
+        map.setLayoutProperty('univ_line2', 'visibility', layerId === 'line2' ? 'visible' : 'none');
+        map.setLayoutProperty('univ_line3', 'visibility', layerId === 'line3' ? 'visible' : 'none');
+        map.setLayoutProperty('hospi_line1', 'visibility', layerId === 'line1' ? 'visible' : 'none');
+        map.setLayoutProperty('hospi_line2', 'visibility', layerId === 'line2' ? 'visible' : 'none');
+        map.setLayoutProperty('hospi_line3', 'visibility', layerId === 'line3' ? 'visible' : 'none');
+
+        updateTextBoxContent(layerId);
 }
     </script>
 
