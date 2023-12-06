@@ -124,28 +124,9 @@
     </div>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Find the element with ID "app"
-        var appElement = document.getElementById('app');
-
-        if (appElement) {
-            // Fetch start.html content dynamically
-            fetch('start.html')
-                .then(response => response.text())
-                .then(data => {
-                    // Inject the loaded content into the #app div
-                    appElement.innerHTML = data;
-                })
-                .catch(error => console.error('Error fetching start.html:', error));
-        } else {
-            console.error('Element with ID "app" not found.');
-        }
-    });
-    </script>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
         var map = new mapboxgl.Map({
