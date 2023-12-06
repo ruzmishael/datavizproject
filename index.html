@@ -129,15 +129,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Fetch start.html content dynamically
-        fetch('start.html')
-            .then(response => response.text())
-            .then(data => {
-                // Inject the loaded content into the #app div
-                document.getElementById('app').innerHTML = data;
-            })
-            .catch(error => console.error('Error fetching start.html:', error));
-        });
+        // Find the element with ID "app"
+        var appElement = document.getElementById('app');
+
+        if (appElement) {
+            // Fetch start.html content dynamically
+            fetch('start.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Inject the loaded content into the #app div
+                    appElement.innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching start.html:', error));
+        } else {
+            console.error('Element with ID "app" not found.');
+        }
+    });
     </script>
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoicnV6bWlzaGFlbCIsImEiOiJjbG5yNjUzZTYwb3lmMmpwa200NndlNTNrIn0.DH2ARNo09iLGylY8SuiNwg';
