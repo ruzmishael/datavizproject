@@ -130,7 +130,7 @@
     <script>
         $(document).ready(function () {
             // Load start.html content dynamically
-            $("#app").load("start.html");
+            $("#app").on('load', function() {
         });
     </script>
     <script>
