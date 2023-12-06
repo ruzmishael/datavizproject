@@ -412,7 +412,7 @@
             });
             map.on('mouseenter', 'univ_line1', function (e) {
                 var universityName = e.features[0].properties.university;
-                var additionalInfo = e.features[0].properties.address;
+                var address = e.features[0].properties.address;
         
                 var popupContent = '<div class="custom-popup">' +
                     '<h5>' + universityName + '</h5>' +
