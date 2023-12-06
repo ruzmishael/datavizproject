@@ -348,10 +348,16 @@
                 var stationName = e.features[0].properties.StationName;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + stationName + '</h5>' +
+                    '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + stationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
+
 
             map.on('mouseleave', 'line2', function () {
                 popup.remove();
@@ -361,8 +367,13 @@
                 var stationName = e.features[0].properties.StationName;
                 var monthlyRidership = e.features[0].properties.monthly_ridership;
 
+                var popupContent = '<div class="custom-popup">' +
+                    '<h5>' + stationName + '</h5>' +
+                    '<p>Monthly Ridership: ' + monthlyRidership + '</p>' +
+                    '</div>';
+            
                 popup.setLngLat(e.lngLat)
-                    .setHTML('<h5>' + stationName + '</h5><p>Monthly Ridership: ' + monthlyRidership + '</p>')
+                    .setHTML(popupContent)
                     .addTo(map);
             });
 
