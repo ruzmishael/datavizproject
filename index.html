@@ -674,6 +674,7 @@ function toggleAllLines() {
 }
 
 function toggleFilter(filterType, activeLine) {
+    // Hide all layers
     map.setLayoutProperty('line1', 'visibility', 'none');
     map.setLayoutProperty('line2', 'visibility', 'none');
     map.setLayoutProperty('line3', 'visibility', 'none');
@@ -684,7 +685,7 @@ function toggleFilter(filterType, activeLine) {
     map.setLayoutProperty('hospi_line2', 'visibility', 'none');
     map.setLayoutProperty('hospi_line3', 'visibility', 'none');
 
-    // Show the selected filter type for the active line
+    // Show the selected line and filter type
     switch (filterType) {
         case 'universities':
             map.setLayoutProperty('univ_' + activeLine, 'visibility', 'visible');
@@ -693,6 +694,9 @@ function toggleFilter(filterType, activeLine) {
             map.setLayoutProperty('hospi_' + activeLine, 'visibility', 'visible');
             break;
     }
+
+    // Show the selected line
+    map.setLayoutProperty(activeLine, 'visibility', 'visible');
 }
     </script>
 
