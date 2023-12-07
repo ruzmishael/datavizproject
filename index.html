@@ -25,18 +25,20 @@
             text-align: center;
         }
 
+        h1, p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease; /* Added transition for a smoother effect */
+        }
+
         h1 {
             font-size: 5em;
             margin-bottom: 0.5em;
             font-weight: bolder;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         p {
             font-size: 2em;
             margin-bottom: 1.5em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
         }
 
         .action-button {
@@ -48,6 +50,12 @@
             color: #fff;
             border-radius: 5px;
             animation: pulsate 1.5s infinite;
+            transition: background 0.3s ease, transform 0.3s ease; /* Added transition for a smoother effect */
+        }
+
+        .action-button:hover {
+            background-color: #ff9c36;
+            transform: scale(1.05);
         }
 
         @keyframes pulsate {
@@ -67,7 +75,17 @@
     <div class="content">
         <h1>Welcome to Riles MNL!</h1>
         <p>Join us as we uncover Metro Manila's Mass Rail Transit System!</p>
-        <a class="action-button" href="main.html">Begin Journey</a>
+        <a class="action-button" href="#" id="beginJourney">Begin Journey</a>
     </div>
+
+    <script>
+        document.getElementById("beginJourney").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevents the default link behavior
+            document.body.style.opacity = 0; // Fading out the body
+            setTimeout(function() {
+                window.location.href = "main.html"; // Redirect to the desired page after the delay
+            }, 500); // Set the delay time in milliseconds
+        });
+    </script>
 </body>
 </html>
