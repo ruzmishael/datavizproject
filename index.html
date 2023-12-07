@@ -19,8 +19,6 @@
             background: url('703E7367-A835-4E0F-BC77-CA0426592E40.jpg') center/cover no-repeat;
             color: #fff;
             font-family: 'Rubik', sans-serif;
-            backdrop-filter: blur(2px);
-            transition: background 2s ease;
         }
 
         .content {
@@ -46,16 +44,26 @@
             background-color: #dd8500;
             color: #fff;
             border-radius: 5px;
+            animation: pulsate 1.5s infinite; /* Added animation for pulsating effect */
+        }
 
-        .action-button:hover {
-            background-color: #ff9c36;
+        @keyframes pulsate {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
         <h1>Welcome to Riles MNL</h1>
-        <p>Join us as we uncover the operations of Metro Manilas&#39; Mass Rail Transit System!</p>
+        <p>Join us as we uncover the operations of Metro Manila's Mass Rail Transit System!</p>
         <a class="action-button" href="main.html">Begin Journey</a>
     </div>
 </body>
