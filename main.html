@@ -114,6 +114,7 @@
         <button type="button" class="btn btn-info btn-line btn-line-line2" onclick="toggleLine('line2')">LRT-2</button>
         <button type="button" class="btn btn-info btn-line btn-line-line3" onclick="toggleLine('line3')">MRT-3</button>
         <button type="button" class="btn btn-info btn-line btn-line-all" onclick="toggleAllLines()">All Lines</button>
+        <button type="button" class="btn btn-success" onclick="proceedToNextPart()">Proceed to next part</button>
     </div>
 
     <div class="text-box">
@@ -730,11 +731,14 @@ function toggleAllLines() {
         btn.style.backgroundColor = '#ccc';
     });
 
-    var allLinesButton = document.querySelector('.btn-line-all');
-    allLinesButton.classList.add('active');
-    allLinesButton.style.backgroundColor = 'black';
-    updateTextBoxContent('all');
-}
+    ar allLinesButton = document.querySelector('.btn-line-all');
+        allLinesButton.classList.add('active');
+        allLinesButton.style.backgroundColor = 'black';
+        updateTextBoxContent('all');
+
+        function proceedToNextPart() {
+            window.location.href = 'dash.html';
+        }
     </script>
 
 </body>
